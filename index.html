@@ -161,6 +161,131 @@
       100% { top: 100%; opacity: 0; }
     }
     
+    /* Neon Wave Effect - 2025 Ultra Modern */
+    .neon-wave {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 200%;
+      height: 150px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.3;
+    }
+    .neon-wave svg {
+      width: 100%;
+      height: 100%;
+      animation: waveMove 15s linear infinite;
+    }
+    .neon-wave path {
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+    .neon-wave .wave1 { stroke: var(--primary); animation: waveGlow 3s ease-in-out infinite; }
+    .neon-wave .wave2 { stroke: var(--accent); animation: waveGlow 3s ease-in-out infinite 0.5s; }
+    .neon-wave .wave3 { stroke: var(--pink); animation: waveGlow 3s ease-in-out infinite 1s; }
+    @keyframes waveMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes waveGlow {
+      0%, 100% { filter: drop-shadow(0 0 5px currentColor); opacity: 0.5; }
+      50% { filter: drop-shadow(0 0 20px currentColor); opacity: 1; }
+    }
+    
+    /* Floating Orbs - 2025 */
+    .floating-orbs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+    .orb:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      background: rgba(139, 92, 246, 0.15);
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    .orb:nth-child(2) {
+      width: 250px;
+      height: 250px;
+      background: rgba(6, 182, 212, 0.12);
+      top: 60%;
+      right: 10%;
+      animation-delay: -5s;
+    }
+    .orb:nth-child(3) {
+      width: 200px;
+      height: 200px;
+      background: rgba(236, 72, 153, 0.1);
+      bottom: 20%;
+      left: 30%;
+      animation-delay: -10s;
+    }
+    .orb:nth-child(4) {
+      width: 350px;
+      height: 350px;
+      background: rgba(16, 185, 129, 0.08);
+      top: 30%;
+      right: 25%;
+      animation-delay: -15s;
+    }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -30px) scale(1.1); }
+      50% { transform: translate(-20px, 20px) scale(0.9); }
+      75% { transform: translate(20px, 30px) scale(1.05); }
+    }
+    
+    /* Cyber Grid Effect */
+    .cyber-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+    }
+    @keyframes gridMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 50px 50px; }
+    }
+    
+    /* Sparkle Effect for Cards */
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: sparkle 1.5s ease-in-out forwards;
+    }
+    @keyframes sparkle {
+      0% { transform: scale(0) rotate(0deg); opacity: 1; }
+      50% { transform: scale(1) rotate(180deg); opacity: 1; }
+      100% { transform: scale(0) rotate(360deg); opacity: 0; }
+    }
+    
     /* Header - 2025 Glassmorphism */
     .header {
       position: fixed;
@@ -974,6 +1099,17 @@
 </head>
 <body>
 
+<!-- Cyber Grid Background -->
+<div class="cyber-grid"></div>
+
+<!-- Floating Orbs - 2025 -->
+<div class="floating-orbs">
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+</div>
+
 <!-- Floating Particles -->
 <div class="particles">
   <div class="particle"></div>
@@ -995,6 +1131,15 @@
   <div class="glow-line"></div>
   <div class="glow-line"></div>
   <div class="glow-line"></div>
+</div>
+
+<!-- Neon Wave Effect -->
+<div class="neon-wave">
+  <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <path class="wave1" d="M0,60 C200,100 400,20 600,60 C800,100 1000,20 1200,60 C1400,100 1600,20 1800,60 C2000,100 2200,20 2400,60" />
+    <path class="wave2" d="M0,70 C200,30 400,110 600,70 C800,30 1000,110 1200,70 C1400,30 1600,110 1800,70 C2000,30 2200,110 2400,70" />
+    <path class="wave3" d="M0,50 C200,90 400,10 600,50 C800,90 1000,10 1200,50 C1400,90 1600,10 1800,50 C2000,90 2200,10 2400,50" />
+  </svg>
 </div>
 
 <header class="header">
@@ -1172,20 +1317,20 @@ const channels = {
   "🎬 Movies & Series": {
     icon: "fas fa-film",
     list: [
-      { name: "Кинопремьера", url: "https://stream8.cinerama.uz/1051/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-      { name: "Кинокомедия", url: "https://stream8.cinerama.uz/1053/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-      { name: "Кинохит", url: "https://stream8.cinerama.uz/1056/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-      { name: "TV1000", url: "https://stream8.cinerama.uz/1059/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TV1000_logo.svg/320px-TV1000_logo.svg.png" },
-      { name: "TV1000 Action", url: "https://stream8.cinerama.uz/1062/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TV1000_logo.svg/320px-TV1000_logo.svg.png" },
-      { name: "TV1000 Comedy", url: "https://stream8.cinerama.uz/1063/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TV1000_logo.svg/320px-TV1000_logo.svg.png" },
-      { name: "Дом Кино", url: "https://stream8.cinerama.uz/1060/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Dom_Kino_logo.svg/200px-Dom_Kino_logo.svg.png" },
-      { name: "Дом Кино Премиум", url: "https://stream8.cinerama.uz/1064/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Dom_Kino_logo.svg/200px-Dom_Kino_logo.svg.png" },
-      { name: "Viju+ Kino", url: "https://stream8.cinerama.uz/1058/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Viju_logo.svg/320px-Viju_logo.svg.png" },
-      { name: "Amedia Premium", url: "https://stream8.cinerama.uz/1065/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-      { name: "Amedia Hit", url: "https://stream8.cinerama.uz/1066/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-      { name: "Hollywood", url: "https://stream8.cinerama.uz/1070/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-      { name: "Sony Sci-Fi", url: "https://stream8.cinerama.uz/1071/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-      { name: "Bollywood", url: "https://stream8.cinerama.uz/1073/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+      { name: "Кинопремьера", url: "https://stream8.cinerama.uz/1200/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+      { name: "Кинокомедия", url: "https://stream8.cinerama.uz/1201/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+      { name: "Кинохит", url: "https://stream8.cinerama.uz/1202/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+      { name: "TV1000", url: "https://stream8.cinerama.uz/1203/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TV1000_logo.svg/320px-TV1000_logo.svg.png" },
+      { name: "TV1000 Action", url: "https://stream8.cinerama.uz/1204/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TV1000_logo.svg/320px-TV1000_logo.svg.png" },
+      { name: "TV1000 Comedy", url: "https://stream8.cinerama.uz/1205/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TV1000_logo.svg/320px-TV1000_logo.svg.png" },
+      { name: "Дом Кино", url: "https://stream8.cinerama.uz/1206/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Dom_Kino_logo.svg/200px-Dom_Kino_logo.svg.png" },
+      { name: "Дом Кино Премиум", url: "https://stream8.cinerama.uz/1207/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Dom_Kino_logo.svg/200px-Dom_Kino_logo.svg.png" },
+      { name: "Viju+ Kino", url: "https://stream8.cinerama.uz/1208/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Viju_logo.svg/320px-Viju_logo.svg.png" },
+      { name: "Amedia Premium", url: "https://stream8.cinerama.uz/1209/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+      { name: "Amedia Hit", url: "https://stream8.cinerama.uz/1211/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+      { name: "Hollywood", url: "https://stream8.cinerama.uz/1212/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+      { name: "Sony Sci-Fi", url: "https://stream8.cinerama.uz/1213/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+      { name: "Bollywood", url: "https://stream8.cinerama.uz/1214/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
     ]
   },
   "🎵 Music": {
@@ -1336,6 +1481,17 @@ function renderChannels() {
       ripple.style.top = (e.clientY - rect.top) + 'px';
       card.querySelector('.channel-logo-box').appendChild(ripple);
       setTimeout(() => ripple.remove(), 600);
+      
+      // Sparkle effect - 2025
+      for (let i = 0; i < 6; i++) {
+        const sparkle = document.createElement('span');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = (i * 0.1) + 's';
+        card.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1500);
+      }
       
       if (activeCard) activeCard.classList.remove('active');
       card.classList.add('active');
