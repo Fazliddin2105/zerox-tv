@@ -549,6 +549,15 @@ document.addEventListener('keydown', e => {
 });
 
 renderChannels();
+
+// Auto-play Setanta Sports 1 on page load
+const firstChannel = channels["Football"].list[0];
+playChannel(firstChannel.url, firstChannel.name, firstChannel.logo, "Football");
+const firstCard = document.querySelector('.channel-card');
+if (firstCard) {
+  firstCard.classList.add('active');
+  activeCard = firstCard;
+}
 </script>
 </body>
 </html>
