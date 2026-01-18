@@ -32,12 +32,9 @@
       min-height: 100vh;
       line-height: 1.5;
     }
-    /* Header */
     .header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 64px;
       background: rgba(9, 9, 11, 0.8);
       backdrop-filter: blur(12px);
@@ -53,11 +50,9 @@
       gap: 10px;
       font-size: 20px;
       font-weight: 700;
-      letter-spacing: -0.5px;
     }
     .logo-icon {
-      width: 36px;
-      height: 36px;
+      width: 36px; height: 36px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       border-radius: 10px;
       display: flex;
@@ -72,17 +67,14 @@
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
     .header-right {
       margin-left: auto;
       display: flex;
-      align-items: center;
       gap: 8px;
     }
     .social-btn {
-      width: 36px;
-      height: 36px;
+      width: 36px; height: 36px;
       border-radius: 8px;
       background: var(--surface-2);
       border: 1px solid var(--border);
@@ -92,29 +84,23 @@
       color: var(--text-2);
       text-decoration: none;
       transition: all 0.2s;
-      font-size: 14px;
     }
     .social-btn:hover {
       background: var(--primary);
       color: white;
-      border-color: var(--primary);
-      transform: translateY(-1px);
     }
-    /* Layout */
     .app {
       display: flex;
       padding-top: 64px;
       min-height: 100vh;
     }
-    /* Sidebar */
     .sidebar {
       width: 300px;
       background: var(--surface);
       border-right: 1px solid var(--border);
       height: calc(100vh - 64px);
       position: fixed;
-      left: 0;
-      top: 64px;
+      left: 0; top: 64px;
       display: flex;
       flex-direction: column;
     }
@@ -122,9 +108,7 @@
       padding: 16px;
       border-bottom: 1px solid var(--border);
     }
-    .search-wrapper {
-      position: relative;
-    }
+    .search-wrapper { position: relative; }
     .search-input {
       width: 100%;
       padding: 10px 14px 10px 40px;
@@ -133,36 +117,25 @@
       border-radius: 10px;
       color: var(--text);
       font-size: 13px;
-      font-family: inherit;
       outline: none;
-      transition: all 0.2s;
     }
-    .search-input::placeholder { color: var(--text-dim); }
     .search-input:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px var(--primary-glow);
     }
     .search-wrapper i {
       position: absolute;
-      left: 14px;
-      top: 50%;
+      left: 14px; top: 50%;
       transform: translateY(-50%);
       color: var(--text-dim);
-      font-size: 13px;
     }
     .channel-count {
       padding: 12px 16px;
       font-size: 12px;
       color: var(--text-dim);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
-    .channel-count strong {
-      color: var(--primary);
-      font-weight: 600;
-    }
+    .channel-count strong { color: var(--primary); }
     .categories {
       padding: 8px;
       overflow-y: auto;
@@ -176,7 +149,6 @@
       align-items: center;
       gap: 10px;
       padding: 10px 12px;
-      background: transparent;
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.15s;
@@ -187,8 +159,7 @@
     .category-header:hover { background: var(--surface-2); color: var(--text); }
     .category-header.active { background: var(--primary); color: white; }
     .category-icon {
-      width: 28px;
-      height: 28px;
+      width: 28px; height: 28px;
       border-radius: 6px;
       background: var(--surface-2);
       display: flex;
@@ -227,33 +198,29 @@
       box-shadow: 0 2px 8px var(--primary-glow);
     }
     .channel-logo {
-      width: 32px;
-      height: 32px;
+      width: 32px; height: 32px;
       border-radius: 6px;
       background: white;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      flex-shrink: 0;
       padding: 3px;
     }
     .channel-logo img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: contain;
     }
     .channel-name {
       font-size: 12px;
       font-weight: 500;
+      color: var(--text-2);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: var(--text-2);
     }
     .channel-item:hover .channel-name,
     .channel-item.active .channel-name { color: var(--text); }
-    /* Main */
     .main {
       flex: 1;
       margin-left: 300px;
@@ -289,11 +256,9 @@
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
     .live-dot {
-      width: 6px;
-      height: 6px;
+      width: 6px; height: 6px;
       background: white;
       border-radius: 50%;
       animation: pulse 1.5s infinite;
@@ -308,26 +273,15 @@
       gap: 10px;
     }
     .current-logo {
-      width: 38px;
-      height: 38px;
+      width: 38px; height: 38px;
       border-radius: 8px;
       background: white;
       overflow: hidden;
       padding: 4px;
     }
-    .current-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .current-info h3 {
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .current-info span {
-      font-size: 11px;
-      color: var(--text-dim);
-    }
+    .current-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .current-info h3 { font-size: 14px; font-weight: 600; }
+    .current-info span { font-size: 11px; color: var(--text-dim); }
     .quality-badge {
       background: var(--surface-3);
       padding: 5px 12px;
@@ -364,24 +318,14 @@
       transition: all 0.2s;
       font-family: inherit;
     }
-    .ctrl-btn.primary {
-      background: var(--primary);
-      color: white;
-    }
-    .ctrl-btn.primary:hover {
-      background: var(--primary-hover);
-    }
+    .ctrl-btn.primary { background: var(--primary); color: white; }
+    .ctrl-btn.primary:hover { background: var(--primary-hover); }
     .ctrl-btn.secondary {
       background: var(--surface-3);
       color: var(--text);
       border: 1px solid var(--border);
     }
-    .ctrl-btn.secondary:hover {
-      background: var(--surface);
-      border-color: var(--text-dim);
-    }
-    .ctrl-btn:hover { transform: translateY(-1px); }
-    /* Stats */
+    .ctrl-btn.secondary:hover { background: var(--surface); }
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -402,19 +346,12 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-dim);
-      margin-top: 2px;
-    }
-    /* Mobile */
+    .stat-label { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
     .mobile-toggle {
       display: none;
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 52px;
-      height: 52px;
+      bottom: 20px; right: 20px;
+      width: 52px; height: 52px;
       background: var(--primary);
       border-radius: 50%;
       border: none;
@@ -425,23 +362,16 @@
       box-shadow: 0 4px 16px var(--primary-glow);
     }
     @media (max-width: 900px) {
-      .sidebar {
-        transform: translateX(-100%);
-        transition: transform 0.3s;
-        z-index: 99;
-      }
+      .sidebar { transform: translateX(-100%); transition: transform 0.3s; z-index: 99; }
       .sidebar.open { transform: translateX(0); }
       .main { margin-left: 0; }
       .mobile-toggle { display: flex; align-items: center; justify-content: center; }
-      .stats { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 500px) {
       .header { padding: 0 14px; }
       .main { padding: 14px; }
       .controls { flex-wrap: wrap; }
       .ctrl-btn { padding: 8px 14px; font-size: 12px; }
-      .stat-card { padding: 14px; }
-      .stat-value { font-size: 22px; }
     }
   </style>
 </head>
@@ -511,100 +441,89 @@
 <script>
 const channels = {
   "🇺🇿 Uzbekistan": [
-    { name: "O'zbekiston", url: "https://stream8.cinerama.uz/1001/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-    { name: "O'zbekiston 24", url: "https://stream8.cinerama.uz/1001/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-    { name: "Yoshlar", url: "https://stream8.cinerama.uz/1002/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f5/Yoshlar_%28Pair_2017%29.png" },
-    { name: "Toshkent TV", url: "https://stream8.cinerama.uz/1003/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-    { name: "Sport TV UZ", url: "https://stream1.cinerama.uz/1004/tracks-v1a1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Sport_TV_%28Uzbekistan%29.png" },
-    { name: "Madaniyat", url: "https://stream8.cinerama.uz/1005/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Madaniyat_va_Ma%27rifat_%28logo_2017%29.png" },
-    { name: "Dunyo Bo'ylab", url: "https://stream8.cinerama.uz/1006/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-    { name: "Bolajon", url: "https://stream8.cinerama.uz/1007/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Bolajon_%28logo_2017%29.png" },
-    { name: "Navo", url: "https://stream8.cinerama.uz/1008/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d1/Navo_%28logo_2017%29.png" },
-    { name: "Kinoteatr UZ", url: "https://stream8.cinerama.uz/1009/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-    { name: "Futbol TV", url: "https://stream8.cinerama.uz/1010/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Sport_TV_%28Uzbekistan%29.png" },
-    { name: "Milliy TV", url: "https://stream8.cinerama.uz/1014/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-    { name: "Mahalla TV", url: "https://stream8.cinerama.uz/1013/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-    { name: "UzReport TV", url: "https://stream8.cinerama.uz/1015/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/UzReport_TV_logo.svg/200px-UzReport_TV_logo.svg.png" },
-    { name: "Zo'r TV", url: "https://stream8.cinerama.uz/1016/tracks-v1a1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Zo%27r_TV_logo.svg/200px-Zo%27r_TV_logo.svg.png" },
-    { name: "Sevimli TV", url: "https://stream2.cinerama.uz/1017/tracks-v2a1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Sevimli_TV_logo.svg/200px-Sevimli_TV_logo.svg.png" },
-    { name: "My5 TV", url: "https://stream8.cinerama.uz/1217/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-    { name: "Lux TV", url: "https://stream1.cinerama.uz/1210/tracks-v1a1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-    { name: "Biz TV", url: "https://stream8.cinerama.uz/1211/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-    { name: "Muz UZ", url: "https://stream8.cinerama.uz/1063/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+    { name: "O'zbekiston", url: "https://stream.uzdigital.tv/uzb/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+    { name: "O'zbekiston 24", url: "https://stream.uzdigital.tv/uzb24/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+    { name: "Yoshlar", url: "https://stream.uzdigital.tv/yoshlar/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Yoshlar_%28Pair_2017%29.png/200px-Yoshlar_%28Pair_2017%29.png" },
+    { name: "Sport TV UZ", url: "https://stream.uzdigital.tv/sport/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Sport_TV_%28Uzbekistan%29.png/200px-Sport_TV_%28Uzbekistan%29.png" },
+    { name: "Futbol TV", url: "https://stream.uzdigital.tv/futbol/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Sport_TV_%28Uzbekistan%29.png/200px-Sport_TV_%28Uzbekistan%29.png" },
+    { name: "Madaniyat", url: "https://stream.uzdigital.tv/madaniyat/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Madaniyat_va_Ma%27rifat_%28logo_2017%29.png/200px-Madaniyat_va_Ma%27rifat_%28logo_2017%29.png" },
+    { name: "Bolajon", url: "https://stream.uzdigital.tv/bolajon/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bolajon_%28logo_2017%29.png/200px-Bolajon_%28logo_2017%29.png" },
+    { name: "Navo", url: "https://stream.uzdigital.tv/navo/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Navo_%28logo_2017%29.png/200px-Navo_%28logo_2017%29.png" },
+    { name: "Dunyo Bo'ylab", url: "https://stream.uzdigital.tv/dunyo/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+    { name: "UzReport TV", url: "https://stream.uzdigital.tv/uzreport/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/UzReport_TV_logo.svg/200px-UzReport_TV_logo.svg.png" },
+    { name: "Sevimli TV", url: "https://stream.uzdigital.tv/sevimli/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Sevimli_TV_logo.svg/200px-Sevimli_TV_logo.svg.png" },
+    { name: "Zo'r TV", url: "https://stream.uzdigital.tv/zortv/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Zo%27r_TV_logo.svg/200px-Zo%27r_TV_logo.svg.png" },
+    { name: "My5 TV", url: "https://stream.uzdigital.tv/my5/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
   ],
   "⚽ Football": [
-    { name: "Setanta Sports 1", url: "https://stream2.cinerama.uz/1263/tracks-v1a1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Setanta_Sports_logo.svg/200px-Setanta_Sports_logo.svg.png" },
-    { name: "Setanta Sports 2", url: "https://stream8.cinerama.uz/1264/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Setanta_Sports_logo.svg/200px-Setanta_Sports_logo.svg.png" },
-    { name: "Setanta Sports 3", url: "https://stream8.cinerama.uz/1265/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Setanta_Sports_logo.svg/200px-Setanta_Sports_logo.svg.png" },
-    { name: "Real Madrid TV", url: "https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/bitrate_3.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/150px-Real_Madrid_CF.svg.png" },
+    { name: "beIN Sports 1", url: "https://playlive2.freestreams.top/bein1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/BeIN_Sports_logo.svg/200px-BeIN_Sports_logo.svg.png" },
+    { name: "beIN Sports 2", url: "https://playlive2.freestreams.top/bein2/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/BeIN_Sports_logo.svg/200px-BeIN_Sports_logo.svg.png" },
+    { name: "ESPN", url: "https://playlive2.freestreams.top/espn/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/200px-ESPN_wordmark.svg.png" },
+    { name: "Fox Sports", url: "https://playlive2.freestreams.top/fox/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Fox_Sports_Logo.svg/200px-Fox_Sports_Logo.svg.png" },
+    { name: "Sky Sports Football", url: "https://playlive2.freestreams.top/sky/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Sky_Sports_Football.svg/200px-Sky_Sports_Football.svg.png" },
     { name: "Match TV", url: "https://streaming.televizor-24-tochka.ru/live/6.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Match_TV_logo.svg/200px-Match_TV_logo.svg.png" },
-    { name: "Match Premier", url: "https://stream8.cinerama.uz/1048/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/Match_Premier_logo.png" },
-    { name: "Eurosport 1", url: "https://stream8.cinerama.uz/1054/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Eurosport_2011.svg/200px-Eurosport_2011.svg.png" },
-    { name: "Eurosport 2", url: "https://stream8.cinerama.uz/1055/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Eurosport_2_Logo_2015.svg/200px-Eurosport_2_Logo_2015.svg.png" },
-    { name: "Viju Sport", url: "https://stream1.cinerama.uz/1229/tracks-v1a1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Viju_logo.svg/200px-Viju_logo.svg.png" },
-    { name: "Red Bull TV", url: "https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/RedBull_TV.svg/200px-RedBull_TV.svg.png" },
-    { name: "DAZN", url: "https://dazn-combat-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-dazn-combat-rakuten/CDN/master.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/DAZN_logo.svg/200px-DAZN_logo.svg.png" },
+    { name: "Match Premier", url: "https://streaming.televizor-24-tochka.ru/live/27.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Match_Premier_logo.png/200px-Match_Premier_logo.png" },
+    { name: "Eurosport 1", url: "https://playlive2.freestreams.top/euro1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Eurosport_2011.svg/200px-Eurosport_2011.svg.png" },
+    { name: "Eurosport 2", url: "https://playlive2.freestreams.top/euro2/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Eurosport_2_Logo_2015.svg/200px-Eurosport_2_Logo_2015.svg.png" },
+    { name: "Real Madrid TV", url: "https://rmtv24-live.rmtv.es/rmtv/smil:direct_ww.smil/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/150px-Real_Madrid_CF.svg.png" },
   ],
   "🥊 Sports & UFC": [
-    { name: "MMA TV", url: "https://stream8.cinerama.uz/1226/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/DAZN_logo.svg/200px-DAZN_logo.svg.png" },
-    { name: "KHL Hockey", url: "https://stream8.cinerama.uz/1028/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/KHL_logo_2016.svg/150px-KHL_logo_2016.svg.png" },
-    { name: "Fuel TV", url: "https://amg01074-fueltv-fueltvemeaen-rakuten-b6j62.amagi.tv/hls/amagi_hls_data_rakutenAA-fueltvemeaen/CDN/master.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/5/52/Fuel_TV_Logo.png" },
-    { name: "Match Fighter", url: "https://stream8.cinerama.uz/1228/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Match_TV_logo.svg/200px-Match_TV_logo.svg.png" },
+    { name: "UFC Fight Pass", url: "https://playlive2.freestreams.top/ufc/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UFC_Logo.svg/200px-UFC_Logo.svg.png" },
+    { name: "DAZN", url: "https://dazn-combat-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-dazn-combat-rakuten/CDN/master.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/DAZN_logo.svg/200px-DAZN_logo.svg.png" },
+    { name: "Red Bull TV", url: "https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/RedBull_TV.svg/200px-RedBull_TV.svg.png" },
+    { name: "WWE Network", url: "https://playlive2.freestreams.top/wwe/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/WWE_Network.svg/200px-WWE_Network.svg.png" },
   ],
   "🇷🇺 Russia": [
-    { name: "Channel One", url: "https://stream8.cinerama.uz/1018/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Channel_One_Russia.svg/150px-Channel_One_Russia.svg.png" },
-    { name: "Russia 1", url: "https://stream8.cinerama.uz/1019/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rossija_1_Logo.svg/150px-Rossija_1_Logo.svg.png" },
-    { name: "Russia 24", url: "https://stream8.cinerama.uz/1021/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Rossiya-24_logo.svg/150px-Rossiya-24_logo.svg.png" },
-    { name: "NTV", url: "https://stream8.cinerama.uz/1022/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/NTV_logo.svg/150px-NTV_logo.svg.png" },
-    { name: "TNT", url: "https://stream8.cinerama.uz/1023/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TNT_logo_%282017%29.svg/150px-TNT_logo_%282017%29.svg.png" },
-    { name: "STS", url: "https://stream8.cinerama.uz/1024/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/STS_logo.svg/150px-STS_logo.svg.png" },
-    { name: "REN TV", url: "https://stream8.cinerama.uz/1025/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/REN_TV_logo.svg/150px-REN_TV_logo.svg.png" },
+    { name: "Perviy Kanal", url: "https://streaming.televizor-24-tochka.ru/live/3.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Channel_One_Russia.svg/150px-Channel_One_Russia.svg.png" },
+    { name: "Russia 1", url: "https://streaming.televizor-24-tochka.ru/live/1.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rossija_1_Logo.svg/150px-Rossija_1_Logo.svg.png" },
+    { name: "Russia 24", url: "https://streaming.televizor-24-tochka.ru/live/2.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Rossiya-24_logo.svg/150px-Rossiya-24_logo.svg.png" },
+    { name: "NTV", url: "https://streaming.televizor-24-tochka.ru/live/4.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/NTV_logo.svg/150px-NTV_logo.svg.png" },
+    { name: "TNT", url: "https://streaming.televizor-24-tochka.ru/live/5.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TNT_logo_%282017%29.svg/150px-TNT_logo_%282017%29.svg.png" },
+    { name: "STS", url: "https://streaming.televizor-24-tochka.ru/live/7.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/STS_logo.svg/150px-STS_logo.svg.png" },
+    { name: "REN TV", url: "https://streaming.televizor-24-tochka.ru/live/8.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/REN_TV_logo.svg/150px-REN_TV_logo.svg.png" },
     { name: "Friday!", url: "https://streaming.televizor-24-tochka.ru/live/19.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Friday%21_Logo.svg/150px-Friday%21_Logo.svg.png" },
     { name: "TV-3", url: "https://streaming.televizor-24-tochka.ru/live/18.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/TV-3_logo.svg/150px-TV-3_logo.svg.png" },
-    { name: "2x2", url: "https://stream8.cinerama.uz/1026/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/2x2_logo.svg/150px-2x2_logo.svg.png" },
-    { name: "Domashny", url: "https://stream8.cinerama.uz/1029/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Domashniy_logo.svg/150px-Domashniy_logo.svg.png" },
-    { name: "Mir 24", url: "https://stream8.cinerama.uz/1030/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Mir_24.svg/150px-Mir_24.svg.png" },
-    { name: "Zvezda", url: "https://stream8.cinerama.uz/1031/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Zvezda_Logo.svg/150px-Zvezda_Logo.svg.png" },
-    { name: "RBC", url: "https://online-video.rbc.ru/spb/rbctv_spb.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/RBC_TV_Logo.svg/150px-RBC_TV_Logo.svg.png" },
+    { name: "Domashny", url: "https://streaming.televizor-24-tochka.ru/live/9.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Domashniy_logo.svg/150px-Domashniy_logo.svg.png" },
+    { name: "Zvezda", url: "https://streaming.televizor-24-tochka.ru/live/10.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Zvezda_Logo.svg/150px-Zvezda_Logo.svg.png" },
+    { name: "Mir 24", url: "https://streaming.televizor-24-tochka.ru/live/11.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Mir_24.svg/150px-Mir_24.svg.png" },
   ],
   "🎬 Movies": [
-    { name: "Viasat Kino", url: "https://stream8.cinerama.uz/1057/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Viasat_Film_logo.svg/200px-Viasat_Film_logo.svg.png" },
-    { name: "Viju+ Cinema", url: "https://stream8.cinerama.uz/1058/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Viju_logo.svg/200px-Viju_logo.svg.png" },
-    { name: "TV1000", url: "https://stream8.cinerama.uz/1059/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TV1000_logo.svg/200px-TV1000_logo.svg.png" },
-    { name: "TV1000 Action", url: "https://stream8.cinerama.uz/1060/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TV1000_logo.svg/200px-TV1000_logo.svg.png" },
-    { name: "Dom Kino", url: "https://stream8.cinerama.uz/1060/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Dom_Kino_logo.svg/150px-Dom_Kino_logo.svg.png" },
-    { name: "Kinopremiera", url: "https://stream8.cinerama.uz/1051/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Dom_Kino_logo.svg/150px-Dom_Kino_logo.svg.png" },
+    { name: "TV1000", url: "https://streaming.televizor-24-tochka.ru/live/28.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TV1000_logo.svg/200px-TV1000_logo.svg.png" },
+    { name: "TV1000 Action", url: "https://streaming.televizor-24-tochka.ru/live/29.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TV1000_logo.svg/200px-TV1000_logo.svg.png" },
+    { name: "Viasat Kino", url: "https://streaming.televizor-24-tochka.ru/live/30.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Viasat_Film_logo.svg/200px-Viasat_Film_logo.svg.png" },
+    { name: "Dom Kino", url: "https://streaming.televizor-24-tochka.ru/live/31.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Dom_Kino_logo.svg/150px-Dom_Kino_logo.svg.png" },
+    { name: "Kinohit", url: "https://streaming.televizor-24-tochka.ru/live/32.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Dom_Kino_logo.svg/150px-Dom_Kino_logo.svg.png" },
   ],
   "🎵 Music": [
     { name: "Muz TV", url: "https://streaming.televizor-24-tochka.ru/live/20.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Muz-TV_logo.svg/150px-Muz-TV_logo.svg.png" },
     { name: "RU.TV", url: "https://hls-03-video.webcaramba.com/rutv/live_1080/index.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/RU_TV_logo.svg/150px-RU_TV_logo.svg.png" },
-    { name: "Europa Plus TV", url: "https://stream8.cinerama.uz/1061/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Europa_Plus_TV_logo.svg/150px-Europa_Plus_TV_logo.svg.png" },
+    { name: "Europa Plus TV", url: "https://streaming.televizor-24-tochka.ru/live/21.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Europa_Plus_TV_logo.svg/150px-Europa_Plus_TV_logo.svg.png" },
     { name: "Shanson TV", url: "https://hls-shansontv.cdnvideo.ru/shansontv/shansontv-sd.smil/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Shanson_TV_logo.svg/150px-Shanson_TV_logo.svg.png" },
+    { name: "MTV Russia", url: "https://streaming.televizor-24-tochka.ru/live/22.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/MTV_Logo_2010.svg/200px-MTV_Logo_2010.svg.png" },
   ],
   "📰 News": [
-    { name: "CNN", url: "https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/CNN.svg/150px-CNN.svg.png" },
-    { name: "France 24", url: "https://live.france24.com/hls/live/2037222-b/F24_AR_HI_HLS/master_5000.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/France_24.svg/200px-France_24.svg.png" },
-    { name: "RT News", url: "https://rt-glb.rttv.com/live/rtnews/playlist_4500Kb.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/200px-Russia-today-logo.svg.png" },
+    { name: "CNN", url: "https://cnn-cnninternational-1-eu.rakuten.wurl.tv/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/CNN.svg/150px-CNN.svg.png" },
     { name: "Al Jazeera", url: "https://live-hls-web-aje.getaj.net/AJE/index.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Aljazeera_eng.svg/150px-Aljazeera_eng.svg.png" },
+    { name: "France 24", url: "https://live.france24.com/hls/live/2037222-b/F24_EN_HI_HLS/master_5000.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/France_24.svg/200px-France_24.svg.png" },
     { name: "DW News", url: "https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Deutsche_Welle_Logo.svg/200px-Deutsche_Welle_Logo.svg.png" },
+    { name: "RT News", url: "https://rt-glb.rttv.com/live/rtnews/playlist_4500Kb.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/200px-Russia-today-logo.svg.png" },
     { name: "Euronews", url: "https://euronews.alteox.app/hls/en_stream.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Euronews_2016_logo.svg/200px-Euronews_2016_logo.svg.png" },
+    { name: "CGTN", url: "https://news.cgtn.com/resource/live/english/cgtn-news.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/CGTN_logo.svg/200px-CGTN_logo.svg.png" },
   ],
   "👶 Kids": [
-    { name: "Karusel", url: "https://stream8.cinerama.uz/1034/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Karusel_TV_logo.svg/150px-Karusel_TV_logo.svg.png" },
-    { name: "Bolajon", url: "https://stream8.cinerama.uz/1007/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Bolajon_%28logo_2017%29.png" },
-    { name: "Multimania", url: "https://sirius.greenhosting.ru/MultimaniaRu/tracks-v1a1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Karusel_TV_logo.svg/150px-Karusel_TV_logo.svg.png" },
-    { name: "Nickelodeon", url: "https://stream8.cinerama.uz/1068/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Nickelodeon_2009_logo.svg/200px-Nickelodeon_2009_logo.svg.png" },
-    { name: "Disney Channel", url: "https://stream8.cinerama.uz/1069/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Disney_Channel_2019.svg/200px-Disney_Channel_2019.svg.png" },
-    { name: "Cartoon Network", url: "https://stream8.cinerama.uz/1070/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Cartoon_Network_2010_logo.svg/200px-Cartoon_Network_2010_logo.svg.png" },
+    { name: "Cartoon Network", url: "https://playlive2.freestreams.top/cn/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Cartoon_Network_2010_logo.svg/200px-Cartoon_Network_2010_logo.svg.png" },
+    { name: "Nickelodeon", url: "https://playlive2.freestreams.top/nick/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Nickelodeon_2009_logo.svg/200px-Nickelodeon_2009_logo.svg.png" },
+    { name: "Disney Channel", url: "https://playlive2.freestreams.top/disney/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Disney_Channel_2019.svg/200px-Disney_Channel_2019.svg.png" },
+    { name: "Karusel", url: "https://streaming.televizor-24-tochka.ru/live/12.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Karusel_TV_logo.svg/150px-Karusel_TV_logo.svg.png" },
+    { name: "Bolajon", url: "https://stream.uzdigital.tv/bolajon/video.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Bolajon_%28logo_2017%29.png/200px-Bolajon_%28logo_2017%29.png" },
   ],
   "🔬 Science": [
-    { name: "Discovery", url: "https://stream8.cinerama.uz/1039/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Discovery_Channel_Logo_2019.svg/200px-Discovery_Channel_Logo_2019.svg.png" },
-    { name: "Discovery Science", url: "https://stream8.cinerama.uz/1040/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Discovery_Science_logo.svg/200px-Discovery_Science_logo.svg.png" },
-    { name: "Nat Geographic", url: "https://stream8.cinerama.uz/1041/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/200px-Natgeologo.svg.png" },
-    { name: "Nat Geo Wild", url: "https://stream8.cinerama.uz/1042/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Nat_Geo_Wild_logo.svg/200px-Nat_Geo_Wild_logo.svg.png" },
-    { name: "Animal Planet", url: "https://stream8.cinerama.uz/1043/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Animal_Planet_logo.svg/200px-Animal_Planet_logo.svg.png" },
-    { name: "Viasat History", url: "https://stream8.cinerama.uz/1046/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Viasat_History.svg/200px-Viasat_History.svg.png" },
-    { name: "History Channel", url: "https://stream8.cinerama.uz/1044/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/History_Logo.svg/200px-History_Logo.svg.png" },
+    { name: "Discovery", url: "https://playlive2.freestreams.top/discovery/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Discovery_Channel_Logo_2019.svg/200px-Discovery_Channel_Logo_2019.svg.png" },
+    { name: "Discovery Science", url: "https://playlive2.freestreams.top/discoverysci/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Discovery_Science_logo.svg/200px-Discovery_Science_logo.svg.png" },
+    { name: "National Geographic", url: "https://playlive2.freestreams.top/natgeo/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/200px-Natgeologo.svg.png" },
+    { name: "Nat Geo Wild", url: "https://playlive2.freestreams.top/natgeowild/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Nat_Geo_Wild_logo.svg/200px-Nat_Geo_Wild_logo.svg.png" },
+    { name: "Animal Planet", url: "https://playlive2.freestreams.top/animal/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Animal_Planet_logo.svg/200px-Animal_Planet_logo.svg.png" },
+    { name: "History Channel", url: "https://playlive2.freestreams.top/history/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/History_Logo.svg/200px-History_Logo.svg.png" },
   ],
   "🇰🇿 Kazakhstan": [
     { name: "Qazaqstan", url: "https://qazaqstantv-stream.qazcdn.com/international/international/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Qazaqstan_TV_Logo.svg/200px-Qazaqstan_TV_Logo.svg.png" },
@@ -622,7 +541,6 @@ const currentLogo = document.getElementById('currentLogo');
 const currentCategory = document.getElementById('currentCategory');
 let hls;
 
-// Count total
 let total = 0;
 Object.values(channels).forEach(list => total += list.length);
 document.getElementById('totalCount').textContent = total;
@@ -720,7 +638,6 @@ document.addEventListener('keydown', e => {
 
 renderCategories();
 
-// Auto-play first
 const firstCat = Object.values(channels)[0];
 if (firstCat && firstCat[0]) {
   playChannel(firstCat[0].url, firstCat[0].name, firstCat[0].logo, Object.keys(channels)[0]);
