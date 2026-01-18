@@ -26,9 +26,12 @@
       --text: #ffffff;
       --text-dim: #71717a;
       --danger: #ef4444;
+      --neon-blue: #00f5ff;
+      --neon-purple: #bf00ff;
+      --neon-pink: #ff00aa;
     }
     
-    /* Animated Background */
+    /* Animated Background - 2025 Ultra Modern */
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
@@ -45,19 +48,51 @@
       right: 0;
       bottom: 0;
       background: 
-        radial-gradient(ellipse 80% 50% at 20% -20%, rgba(139, 92, 246, 0.15), transparent),
-        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(6, 182, 212, 0.1), transparent),
-        radial-gradient(ellipse 40% 30% at 50% 50%, rgba(236, 72, 153, 0.05), transparent);
+        radial-gradient(ellipse 80% 50% at 20% -20%, rgba(139, 92, 246, 0.2), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(6, 182, 212, 0.15), transparent),
+        radial-gradient(ellipse 40% 30% at 50% 50%, rgba(236, 72, 153, 0.08), transparent),
+        radial-gradient(circle at 30% 70%, rgba(0, 245, 255, 0.05), transparent 40%),
+        radial-gradient(circle at 70% 30%, rgba(191, 0, 255, 0.05), transparent 40%);
       pointer-events: none;
       z-index: 0;
-      animation: bgPulse 10s ease-in-out infinite alternate;
+      animation: bgPulse 10s ease-in-out infinite alternate, bgShift 20s ease-in-out infinite;
     }
     @keyframes bgPulse {
       0% { opacity: 0.7; }
       100% { opacity: 1; }
     }
+    @keyframes bgShift {
+      0%, 100% { filter: hue-rotate(0deg); }
+      50% { filter: hue-rotate(15deg); }
+    }
     
-    /* Floating particles */
+    /* Aurora Effect - 2025 */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      right: -50%;
+      bottom: -50%;
+      background: 
+        conic-gradient(from 0deg at 50% 50%, 
+          transparent 0deg, 
+          rgba(139, 92, 246, 0.03) 60deg, 
+          transparent 120deg,
+          rgba(6, 182, 212, 0.03) 180deg,
+          transparent 240deg,
+          rgba(236, 72, 153, 0.03) 300deg,
+          transparent 360deg);
+      animation: auroraRotate 30s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes auroraRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Floating particles - Enhanced */
     .particles {
       position: fixed;
       top: 0;
@@ -76,44 +111,81 @@
       border-radius: 50%;
       opacity: 0.3;
       animation: float 20s infinite;
+      box-shadow: 0 0 10px currentColor;
     }
-    .particle:nth-child(2) { left: 20%; animation-delay: -2s; background: var(--accent); }
+    .particle:nth-child(2) { left: 20%; animation-delay: -2s; background: var(--accent); width: 6px; height: 6px; }
     .particle:nth-child(3) { left: 40%; animation-delay: -4s; background: var(--pink); }
-    .particle:nth-child(4) { left: 60%; animation-delay: -6s; }
-    .particle:nth-child(5) { left: 80%; animation-delay: -8s; background: var(--green); }
+    .particle:nth-child(4) { left: 60%; animation-delay: -6s; width: 3px; height: 3px; }
+    .particle:nth-child(5) { left: 80%; animation-delay: -8s; background: var(--green); width: 5px; height: 5px; }
     .particle:nth-child(6) { left: 10%; animation-delay: -10s; background: var(--orange); }
-    .particle:nth-child(7) { left: 30%; animation-delay: -12s; }
-    .particle:nth-child(8) { left: 50%; animation-delay: -14s; background: var(--accent); }
+    .particle:nth-child(7) { left: 30%; animation-delay: -12s; width: 2px; height: 2px; }
+    .particle:nth-child(8) { left: 50%; animation-delay: -14s; background: var(--accent); width: 7px; height: 7px; }
     .particle:nth-child(9) { left: 70%; animation-delay: -16s; background: var(--pink); }
-    .particle:nth-child(10) { left: 90%; animation-delay: -18s; }
+    .particle:nth-child(10) { left: 90%; animation-delay: -18s; background: var(--neon-blue); }
     @keyframes float {
-      0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
-      10% { opacity: 0.5; }
-      50% { opacity: 0.3; }
+      0%, 100% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.6; }
+      50% { opacity: 0.4; transform: translateY(50vh) scale(1) rotate(180deg); }
       90% { opacity: 0; }
-      100% { transform: translateY(-100px) scale(1); }
+      100% { transform: translateY(-100px) scale(1) rotate(360deg); }
     }
     
-    /* Header */
+    /* Glowing Lines Animation */
+    .glow-lines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .glow-line {
+      position: absolute;
+      width: 2px;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent, var(--primary), transparent);
+      animation: glowLine 8s linear infinite;
+      opacity: 0.3;
+    }
+    .glow-line:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .glow-line:nth-child(2) { left: 25%; animation-delay: 2s; background: linear-gradient(to bottom, transparent, var(--accent), transparent); }
+    .glow-line:nth-child(3) { left: 45%; animation-delay: 4s; background: linear-gradient(to bottom, transparent, var(--pink), transparent); }
+    .glow-line:nth-child(4) { left: 65%; animation-delay: 6s; }
+    .glow-line:nth-child(5) { left: 85%; animation-delay: 1s; background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent); }
+    @keyframes glowLine {
+      0% { top: -100px; opacity: 0; }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.5; }
+      100% { top: 100%; opacity: 0; }
+    }
+    
+    /* Header - 2025 Glassmorphism */
     .header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       height: 70px;
-      background: rgba(5, 5, 8, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(5, 5, 8, 0.7);
+      backdrop-filter: blur(25px) saturate(180%);
+      -webkit-backdrop-filter: blur(25px) saturate(180%);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 24px;
-      animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1), headerGlow 3s ease-in-out infinite alternate;
     }
     @keyframes slideDown {
       from { transform: translateY(-100%); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes headerGlow {
+      0% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.1); }
+      100% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.2), 0 0 60px rgba(6, 182, 212, 0.1); }
     }
     .logo {
       display: flex;
@@ -121,15 +193,20 @@
       gap: 12px;
       font-size: 24px;
       font-weight: 900;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--primary), var(--accent), var(--pink));
+      background-size: 200% 200%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: logoGlow 3s ease-in-out infinite alternate;
+      animation: logoGlow 3s ease-in-out infinite alternate, gradientShift 5s ease infinite;
     }
     @keyframes logoGlow {
       from { filter: drop-shadow(0 0 10px var(--primary-glow)); }
-      to { filter: drop-shadow(0 0 20px var(--accent-glow)); }
+      to { filter: drop-shadow(0 0 25px var(--accent-glow)); }
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
     .logo-icon {
       width: 44px;
@@ -140,12 +217,32 @@
       align-items: center;
       justify-content: center;
       font-size: 22px;
-      animation: iconPulse 2s ease-in-out infinite;
-      box-shadow: 0 0 30px var(--primary-glow);
+      animation: iconPulse 2s ease-in-out infinite, iconRotate 10s ease-in-out infinite;
+      box-shadow: 0 0 30px var(--primary-glow), inset 0 0 20px rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .logo-icon::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: iconShine 3s ease-in-out infinite;
     }
     @keyframes iconPulse {
-      0%, 100% { transform: scale(1) rotate(0deg); }
-      50% { transform: scale(1.05) rotate(3deg); }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    @keyframes iconRotate {
+      0%, 100% { border-radius: 14px; }
+      50% { border-radius: 20px; }
+    }
+    @keyframes iconShine {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      50%, 100% { transform: translateX(100%) rotate(45deg); }
     }
     .header-right {
       display: flex;
@@ -185,17 +282,34 @@
     .social-link i { position: relative; z-index: 1; transition: all 0.3s; }
     
     .channel-count {
-      background: linear-gradient(135deg, var(--primary), var(--pink));
+      background: linear-gradient(135deg, var(--primary), var(--pink), var(--accent));
+      background-size: 200% 200%;
       padding: 8px 16px;
       border-radius: 24px;
       font-size: 13px;
       font-weight: 700;
-      animation: countPulse 2s ease-in-out infinite;
-      box-shadow: 0 4px 20px var(--primary-glow);
+      animation: countPulse 2s ease-in-out infinite, gradientShift 4s ease infinite;
+      box-shadow: 0 4px 20px var(--primary-glow), inset 0 1px 0 rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .channel-count::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: countShine 3s ease-in-out infinite;
     }
     @keyframes countPulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50% { transform: scale(1.03); }
+    }
+    @keyframes countShine {
+      0% { left: -100%; }
+      50%, 100% { left: 100%; }
     }
     
     /* Main */
@@ -224,18 +338,50 @@
       background: linear-gradient(180deg, var(--surface), var(--surface-2));
       border-radius: 24px;
       overflow: hidden;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(139, 92, 246, 0.3);
       box-shadow: 
         0 25px 80px rgba(0,0,0,0.5),
         0 0 60px var(--primary-glow),
         inset 0 1px 0 rgba(255,255,255,0.05);
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      animation: playerAppear 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .player-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), var(--accent), var(--pink), transparent);
+      animation: borderGlow 3s linear infinite;
+    }
+    .player-container::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--primary), var(--pink), transparent);
+      animation: borderGlow 3s linear infinite reverse;
+    }
+    @keyframes playerAppear {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes borderGlow {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
     }
     .player-container:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      border-color: var(--primary);
       box-shadow: 
         0 35px 100px rgba(0,0,0,0.6),
-        0 0 80px var(--primary-glow),
+        0 0 100px var(--primary-glow),
+        0 0 150px rgba(6, 182, 212, 0.2),
         inset 0 1px 0 rgba(255,255,255,0.1);
     }
     .player-header {
@@ -360,13 +506,34 @@
     }
     .ctrl-btn:hover::before { opacity: 1; }
     .ctrl-btn.primary {
-      background: linear-gradient(135deg, var(--primary), var(--pink));
+      background: linear-gradient(135deg, var(--primary), var(--pink), var(--accent));
+      background-size: 200% 200%;
       color: white;
       box-shadow: 0 4px 20px var(--primary-glow);
+      animation: btnGradient 4s ease infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    .ctrl-btn.primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    .ctrl-btn.primary:hover::after {
+      left: 100%;
+    }
+    @keyframes btnGradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
     .ctrl-btn.primary:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 8px 30px var(--primary-glow);
+      transform: translateY(-4px) scale(1.08);
+      box-shadow: 0 12px 40px var(--primary-glow), 0 0 30px rgba(236, 72, 153, 0.3);
     }
     .ctrl-btn.secondary {
       background: var(--surface);
@@ -428,32 +595,46 @@
       transform: translateY(-50%);
       width: 4px;
       height: 24px;
-      background: linear-gradient(180deg, var(--primary), var(--accent));
+      background: linear-gradient(180deg, var(--primary), var(--accent), var(--pink));
       border-radius: 2px;
-      animation: titleBar 2s ease-in-out infinite;
+      animation: titleBar 2s ease-in-out infinite, titleBarColor 5s linear infinite;
     }
     @keyframes titleBar {
-      0%, 100% { height: 24px; }
-      50% { height: 32px; }
+      0%, 100% { height: 24px; opacity: 1; }
+      50% { height: 36px; opacity: 0.8; }
+    }
+    @keyframes titleBarColor {
+      0%, 100% { filter: hue-rotate(0deg); }
+      50% { filter: hue-rotate(30deg); }
     }
     .category-title i {
       color: var(--primary);
       font-size: 20px;
-      animation: iconBounce 2s ease-in-out infinite;
+      animation: iconBounce 2s ease-in-out infinite, iconGlow 3s ease-in-out infinite;
     }
     @keyframes iconBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-4px) scale(1.1); }
+    }
+    @keyframes iconGlow {
+      0%, 100% { filter: drop-shadow(0 0 5px var(--primary-glow)); }
+      50% { filter: drop-shadow(0 0 15px var(--primary-glow)); }
     }
     .category-title span {
       background: linear-gradient(135deg, var(--surface-2), var(--surface-3));
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 12px;
       font-size: 12px;
       font-weight: 600;
       color: var(--primary-light);
       margin-left: auto;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      box-shadow: 0 2px 10px rgba(139, 92, 246, 0.1);
+      transition: all 0.3s;
+    }
+    .category-title span:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
     }
     .channels-scroll {
       display: flex;
@@ -464,44 +645,74 @@
       scrollbar-color: var(--primary) var(--surface);
     }
     .channels-scroll::-webkit-scrollbar {
-      height: 6px;
+      height: 8px;
     }
     .channels-scroll::-webkit-scrollbar-track {
       background: var(--surface);
-      border-radius: 3px;
+      border-radius: 4px;
     }
     .channels-scroll::-webkit-scrollbar-thumb {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      border-radius: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--pink));
+      border-radius: 4px;
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+    .channels-scroll::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(90deg, var(--accent), var(--primary), var(--pink));
     }
     .channel-card {
       flex-shrink: 0;
       width: 110px;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .channel-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, var(--primary), var(--accent), var(--pink));
+      border-radius: 18px;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.4s;
+      animation: cardBorderRotate 3s linear infinite;
+    }
+    @keyframes cardBorderRotate {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+    .channel-card:hover::before {
+      opacity: 0.5;
     }
     .channel-card:hover {
-      transform: translateY(-8px) scale(1.02);
+      transform: translateY(-10px) scale(1.05);
     }
     .channel-card:hover .channel-logo-box {
       border-color: var(--primary);
-      box-shadow: 0 15px 40px var(--primary-glow);
+      box-shadow: 0 20px 50px var(--primary-glow), 0 0 30px rgba(6, 182, 212, 0.3);
     }
     .channel-card.active {
       transform: translateY(-5px);
+    }
+    .channel-card.active::before {
+      opacity: 1;
     }
     .channel-card.active .channel-logo-box {
       border-color: var(--primary);
       background: linear-gradient(135deg, var(--surface-2), var(--surface-3));
       box-shadow: 
-        0 0 30px var(--primary-glow),
-        0 0 60px var(--primary-glow),
-        inset 0 0 20px rgba(139, 92, 246, 0.1);
+        0 0 40px var(--primary-glow),
+        0 0 80px var(--primary-glow),
+        inset 0 0 30px rgba(139, 92, 246, 0.15);
       animation: activeCard 2s ease-in-out infinite;
     }
+    }
     @keyframes activeCard {
-      0%, 100% { box-shadow: 0 0 30px var(--primary-glow), 0 0 60px var(--primary-glow); }
-      50% { box-shadow: 0 0 40px var(--primary-glow), 0 0 80px var(--accent-glow); }
+      0%, 100% { box-shadow: 0 0 40px var(--primary-glow), 0 0 80px var(--primary-glow); }
+      50% { box-shadow: 0 0 50px var(--primary-glow), 0 0 100px var(--accent-glow); }
     }
     .channel-logo-box {
       width: 110px;
@@ -521,19 +732,32 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent);
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), transparent, rgba(6, 182, 212, 0.1));
       opacity: 0;
       transition: opacity 0.4s;
     }
+    .channel-logo-box::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
     .channel-card:hover .channel-logo-box::before { opacity: 1; }
+    .channel-card:hover .channel-logo-box::after { transform: translateX(100%); }
     .channel-logo-box img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      transition: transform 0.4s;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s;
     }
     .channel-card:hover .channel-logo-box img {
-      transform: scale(1.1);
+      transform: scale(1.15);
+      filter: brightness(1.1);
     }
     .channel-card-name {
       font-size: 11px;
@@ -580,6 +804,172 @@
     @keyframes ripple {
       to { transform: scale(4); opacity: 0; }
     }
+    
+    /* Footer - 2025 Modern */
+    .footer {
+      background: linear-gradient(180deg, var(--surface), var(--bg));
+      border-top: 1px solid rgba(139, 92, 246, 0.2);
+      padding: 40px 24px 30px;
+      position: relative;
+      z-index: 1;
+      margin-top: 40px;
+    }
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), var(--accent), var(--pink), transparent);
+      animation: footerBorder 4s linear infinite;
+    }
+    @keyframes footerBorder {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--accent), var(--pink));
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 5s ease infinite;
+    }
+    .footer-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 0 20px var(--primary-glow);
+    }
+    .footer-tagline {
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .footer-social-link {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--surface-2), var(--surface-3));
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      font-size: 18px;
+    }
+    .footer-social-link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .footer-social-link:hover {
+      transform: translateY(-5px) scale(1.1);
+      border-color: var(--primary);
+      box-shadow: 0 15px 40px var(--primary-glow);
+    }
+    .footer-social-link:hover::before { opacity: 1; }
+    .footer-social-link:hover i { color: white; }
+    .footer-social-link i { position: relative; z-index: 1; transition: all 0.3s; }
+    .footer-social-link.telegram:hover { box-shadow: 0 15px 40px rgba(0, 136, 204, 0.4); }
+    .footer-social-link.telegram:hover::before { background: linear-gradient(135deg, #0088cc, #00aaff); }
+    .footer-social-link.instagram:hover { box-shadow: 0 15px 40px rgba(225, 48, 108, 0.4); }
+    .footer-social-link.instagram:hover::before { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .footer-social-link.linkedin:hover { box-shadow: 0 15px 40px rgba(0, 119, 181, 0.4); }
+    .footer-social-link.linkedin:hover::before { background: linear-gradient(135deg, #0077b5, #00a0dc); }
+    .footer-divider {
+      width: 200px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
+      border-radius: 1px;
+    }
+    .footer-owner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-owner-label {
+      color: var(--text-dim);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .footer-owner-name {
+      font-size: 24px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--pink), var(--accent));
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s ease infinite, ownerGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes ownerGlow {
+      from { filter: drop-shadow(0 0 10px var(--primary-glow)); }
+      to { filter: drop-shadow(0 0 25px rgba(236, 72, 153, 0.5)); }
+    }
+    .footer-copyright {
+      color: var(--text-dim);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-copyright i {
+      color: var(--danger);
+      animation: heartBeat 1.5s ease-in-out infinite;
+    }
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .footer-year {
+      color: var(--primary-light);
+      font-weight: 600;
+    }
+    
+    @media (max-width: 600px) {
+      .footer { padding: 30px 16px 24px; }
+      .footer-social-link { width: 44px; height: 44px; font-size: 16px; }
+      .footer-owner-name { font-size: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -596,6 +986,15 @@
   <div class="particle"></div>
   <div class="particle"></div>
   <div class="particle"></div>
+</div>
+
+<!-- Glowing Lines Effect -->
+<div class="glow-lines">
+  <div class="glow-line"></div>
+  <div class="glow-line"></div>
+  <div class="glow-line"></div>
+  <div class="glow-line"></div>
+  <div class="glow-line"></div>
 </div>
 
 <header class="header">
@@ -639,6 +1038,41 @@
   <section class="channel-browser" id="channelBrowser"></section>
 </main>
 
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">📺</div>
+        <span>ZeroX TV</span>
+      </div>
+      <p class="footer-tagline">Premium IPTV Streaming Platform</p>
+    </div>
+    
+    <div class="footer-social">
+      <a href="https://t.me/Fazliddin_Cyber" target="_blank" class="footer-social-link telegram" title="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+      <a href="https://instagram.com/takhirov_blog" target="_blank" class="footer-social-link instagram" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/fazliddin-takhirov-%F0%9F%87%BA%F0%9F%87%BF-943126380" target="_blank" class="footer-social-link linkedin" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+    
+    <div class="footer-divider"></div>
+    
+    <div class="footer-owner">
+      <span class="footer-owner-label">Created by</span>
+      <h3 class="footer-owner-name">Fazliddin Takhirov</h3>
+    </div>
+    
+    <p class="footer-copyright">
+      Made with <i class="fas fa-heart"></i> in Uzbekistan • <span class="footer-year">2025</span>
+    </p>
+  </div>
+</footer>
+
 <script>
 const channels = {
   "⚽ Football": {
@@ -647,8 +1081,6 @@ const channels = {
       { name: "Setanta Sports 1", url: "https://stream2.cinerama.uz/1263/tracks-v1a1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Setanta_Sports_logo.svg/320px-Setanta_Sports_logo.svg.png" },
       { name: "Setanta Sports 2", url: "https://stream8.cinerama.uz/1264/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Setanta_Sports_logo.svg/320px-Setanta_Sports_logo.svg.png" },
       { name: "Setanta Sports 3", url: "https://stream8.cinerama.uz/1265/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Setanta_Sports_logo.svg/320px-Setanta_Sports_logo.svg.png" },
-      { name: "Sport UZ HD", url: "https://stream1.cinerama.uz/1004/tracks-v1a1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Sport_TV_%28Uzbekistan%29.png" },
-      { name: "Futbol UZ", url: "https://stream8.cinerama.uz/1010/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
       { name: "Real Madrid TV", url: "https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/bitrate_3.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/200px-Real_Madrid_CF.svg.png" },
       { name: "Barca TV", url: "https://live-fc-barcelona.streaming.mobile.laliga.es/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/200px-FC_Barcelona_%28crest%29.svg.png" },
       { name: "Match TV", url: "https://streaming.televizor-24-tochka.ru/live/6.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Match_TV_logo.svg/320px-Match_TV_logo.svg.png" },
@@ -661,14 +1093,13 @@ const channels = {
       { name: "Viju Sport", url: "https://stream1.cinerama.uz/1229/tracks-v1a1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Viju_logo.svg/320px-Viju_logo.svg.png" },
       { name: "Viju+ Sport", url: "https://stream8.cinerama.uz/1230/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Viju_logo.svg/320px-Viju_logo.svg.png" },
       { name: "Red Bull TV", url: "https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4e/RedBull_TV.svg/320px-RedBull_TV.svg.png" },
-      { name: "Qazsport", url: "https://stream8.cinerama.uz/1262/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Qazsport_logo.svg/320px-Qazsport_logo.svg.png" },
     ]
   },
   "🥊 Sports & UFC": {
     icon: "fas fa-dumbbell",
     list: [
       { name: "UFC TV", url: "https://stream8.cinerama.uz/1226/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/320px-UFC_logo.svg.png" },
-      { name: "Fight Night", url: "https://stream8.cinerama.uz/1227/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
+      { name: "Fight Night", url: "https://stream8.cinerama.uz/1227/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/320px-UFC_logo.svg.png" },
       { name: "KHL TV", url: "https://stream8.cinerama.uz/1028/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/KHL_logo_2016.svg/200px-KHL_logo_2016.svg.png" },
       { name: "DAZN", url: "https://dazn-combat-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-dazn-combat-rakuten/CDN/master.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/DAZN_logo.svg/320px-DAZN_logo.svg.png" },
       { name: "Fuel TV", url: "https://amg01074-fueltv-fueltvemeaen-rakuten-b6j62.amagi.tv/hls/amagi_hls_data_rakutenAA-fueltvemeaen/CDN/master.m3u8", logo: "https://upload.wikimedia.org/wikipedia/en/5/52/Fuel_TV_Logo.png" },
@@ -736,7 +1167,6 @@ const channels = {
       { name: "Ю", url: "https://stream8.cinerama.uz/1037/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Yu_TV.svg/200px-Yu_TV.svg.png" },
       { name: "СТС Love", url: "https://stream8.cinerama.uz/1038/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/STS_logo.svg/200px-STS_logo.svg.png" },
       { name: "РБК", url: "https://online-video.rbc.ru/spb/rbctv_spb.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/RBC_TV_Logo.svg/200px-RBC_TV_Logo.svg.png" },
-      { name: "Москва 24", url: "https://stream8.cinerama.uz/1039/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
     ]
   },
   "🎬 Movies & Series": {
@@ -750,7 +1180,6 @@ const channels = {
       { name: "TV1000 Comedy", url: "https://stream8.cinerama.uz/1063/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TV1000_logo.svg/320px-TV1000_logo.svg.png" },
       { name: "Дом Кино", url: "https://stream8.cinerama.uz/1060/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Dom_Kino_logo.svg/200px-Dom_Kino_logo.svg.png" },
       { name: "Дом Кино Премиум", url: "https://stream8.cinerama.uz/1064/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Dom_Kino_logo.svg/200px-Dom_Kino_logo.svg.png" },
-      { name: "Kinoteatr UZ", url: "https://stream8.cinerama.uz/1009/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
       { name: "Viju+ Kino", url: "https://stream8.cinerama.uz/1058/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Viju_logo.svg/320px-Viju_logo.svg.png" },
       { name: "Amedia Premium", url: "https://stream8.cinerama.uz/1065/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
       { name: "Amedia Hit", url: "https://stream8.cinerama.uz/1066/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
@@ -769,7 +1198,6 @@ const channels = {
       { name: "MTV Russia", url: "https://stream8.cinerama.uz/1076/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/MTV_Logo_2010.svg/200px-MTV_Logo_2010.svg.png" },
       { name: "VH1", url: "https://stream8.cinerama.uz/1078/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/VH1_logo.svg/200px-VH1_logo.svg.png" },
       { name: "Bridge TV", url: "https://stream8.cinerama.uz/1079/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
-      { name: "Navo", url: "https://stream8.cinerama.uz/1008/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d1/Navo_%28logo_2017%29.png" },
       { name: "TNT Music", url: "https://stream8.cinerama.uz/1081/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
       { name: "ЖАРА", url: "https://stream8.cinerama.uz/1082/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
     ]
@@ -790,11 +1218,10 @@ const channels = {
       { name: "Bloomberg", url: "https://stream8.cinerama.uz/1091/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Bloomberg_Television.svg/200px-Bloomberg_Television.svg.png" },
     ]
   },
-  "👶 Kids": {
+  "👶 Kids & Anime": {
     icon: "fas fa-child",
     list: [
       { name: "Карусель", url: "https://stream8.cinerama.uz/1034/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Karusel_TV_logo.svg/200px-Karusel_TV_logo.svg.png" },
-      { name: "Bolajon", url: "https://stream8.cinerama.uz/1007/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Bolajon_%28logo_2017%29.png" },
       { name: "Мультимания", url: "https://sirius.greenhosting.ru/MultimaniaRu/tracks-v1a1/mono.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
       { name: "Детский мир", url: "https://stream8.cinerama.uz/1032/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ozbekiston_Televizioni_logo.svg/200px-Ozbekiston_Televizioni_logo.svg.png" },
       { name: "Nickelodeon", url: "https://stream8.cinerama.uz/1092/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Nickelodeon_2009_logo.svg/200px-Nickelodeon_2009_logo.svg.png" },
@@ -808,7 +1235,7 @@ const channels = {
   "🔬 Documentary": {
     icon: "fas fa-microscope",
     list: [
-      { name: "Discovery", url: "https://stream8.cinerama.uz/1039/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Discovery_Channel_Logo_2019.svg/320px-Discovery_Channel_Logo_2019.svg.png" },
+      { name: "Discovery", url: "https://stream8.cinerama.uz/1103/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Discovery_Channel_Logo_2019.svg/320px-Discovery_Channel_Logo_2019.svg.png" },
       { name: "Discovery Science", url: "https://stream8.cinerama.uz/1040/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Discovery_Science_logo.svg/320px-Discovery_Science_logo.svg.png" },
       { name: "TLC", url: "https://stream8.cinerama.uz/1104/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/TLC_Logo.svg/200px-TLC_Logo.svg.png" },
       { name: "Nat Geographic", url: "https://stream8.cinerama.uz/1041/tracks-v1a1/playlist.m3u8", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/200px-Natgeologo.svg.png" },
