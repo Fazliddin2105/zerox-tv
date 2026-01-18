@@ -8,557 +8,140 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --primary: #6366f1;
-      --primary-dark: #4f46e5;
-      --secondary: #ec4899;
-      --accent: #06b6d4;
-      --dark: #0f0f23;
-      --darker: #070714;
-      --card: rgba(255, 255, 255, 0.03);
-      --card-hover: rgba(255, 255, 255, 0.08);
-      --border: rgba(255, 255, 255, 0.1);
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --glow: 0 0 40px rgba(99, 102, 241, 0.3);
+      --primary: #6366f1; --primary-dark: #4f46e5; --secondary: #ec4899; --accent: #06b6d4;
+      --dark: #0f0f23; --darker: #070714; --card: rgba(255, 255, 255, 0.03);
+      --card-hover: rgba(255, 255, 255, 0.08); --border: rgba(255, 255, 255, 0.1);
+      --text: #e2e8f0; --text-muted: #94a3b8; --glow: 0 0 40px rgba(99, 102, 241, 0.3);
     }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--darker);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Animated Background */
-    .bg-animation {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: 
-        radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    body { font-family: 'Inter', sans-serif; background: var(--darker); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+    .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+      background: radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%),
-        var(--darker);
+        radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%), var(--darker);
     }
-
-    .bg-animation::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      opacity: 0.03;
-      pointer-events: none;
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 12px 20px;
+      background: rgba(7, 7, 20, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
     }
-
-    /* Header */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 12px 20px;
-      background: rgba(7, 7, 20, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+    .header-content { max-width: 1400px; margin: 0 auto; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px; flex-wrap: wrap;
     }
-
-    .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: var(--glow);
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-icon {
-      width: 45px;
-      height: 45px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      box-shadow: var(--glow);
-    }
-
-    .logo-text {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
+    .logo-text { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700;
       background: linear-gradient(135deg, #fff 0%, var(--text-muted) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
-    .logo-badge {
-      background: linear-gradient(135deg, var(--secondary), var(--primary));
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+    .logo-badge { background: linear-gradient(135deg, var(--secondary), var(--primary));
+      padding: 3px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase;
     }
-
-    /* Channel Selector */
-    .channel-selector {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 1;
-      max-width: 500px;
-      justify-content: center;
+    .channel-selector { display: flex; align-items: center; gap: 12px; flex: 1; max-width: 500px; justify-content: center; }
+    .selector-label { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--text-muted); white-space: nowrap; }
+    .selector-label i { color: var(--accent); }
+    select#channelSelect { flex: 1; min-width: 200px; padding: 12px 16px; font-size: 14px; font-weight: 500;
+      font-family: 'Inter', sans-serif; background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; color: var(--text); cursor: pointer; transition: all 0.3s ease; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6,9 12,15 18,9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center; background-size: 18px; padding-right: 40px;
     }
-
-    .selector-label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-muted);
-      white-space: nowrap;
+    select#channelSelect:hover { border-color: var(--primary); background-color: var(--card-hover); }
+    select#channelSelect:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); }
+    select#channelSelect optgroup { background: var(--dark); color: var(--primary); font-weight: 600; }
+    select#channelSelect option { background: var(--darker); color: var(--text); }
+    .social-links { display: flex; gap: 8px; }
+    .social-btn { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border);
+      background: var(--card); color: var(--text-muted); display: flex; align-items: center;
+      justify-content: center; font-size: 16px; cursor: pointer; transition: all 0.3s ease; text-decoration: none;
     }
-
-    .selector-label i {
-      color: var(--accent);
-    }
-
-    select#channelSelect {
-      flex: 1;
-      min-width: 200px;
-      padding: 12px 16px;
-      font-size: 14px;
-      font-weight: 500;
-      font-family: 'Inter', sans-serif;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      color: var(--text);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6,9 12,15 18,9'%3E%3C/polyline%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      background-size: 18px;
-      padding-right: 40px;
-    }
-
-    select#channelSelect:hover {
-      border-color: var(--primary);
-      background-color: var(--card-hover);
-    }
-
-    select#channelSelect:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-    }
-
-    select#channelSelect optgroup {
-      background: var(--dark);
-      color: var(--primary);
-      font-weight: 600;
-      padding: 10px;
-    }
-
-    select#channelSelect option {
-      background: var(--darker);
-      color: var(--text);
-      padding: 10px;
-    }
-
-    /* Social Links */
-    .social-links {
-      display: flex;
-      gap: 8px;
-    }
-
-    .social-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .social-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: var(--glow);
-    }
-
+    .social-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); box-shadow: var(--glow); }
     .social-btn.telegram:hover { color: #0088cc; border-color: #0088cc; }
     .social-btn.instagram:hover { color: #e4405f; border-color: #e4405f; }
     .social-btn.linkedin:hover { color: #0077b5; border-color: #0077b5; }
-
-    /* Main Content */
-    main {
-      padding-top: 100px;
-      min-height: 100vh;
+    main { padding-top: 100px; min-height: 100vh; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .player-wrapper { position: relative; background: var(--dark); border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), var(--glow);
     }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
+    .player-header { padding: 16px 20px; background: var(--card); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
     }
-
-    /* Player Section */
-    .player-section {
-      margin-bottom: 30px;
+    .now-playing { display: flex; align-items: center; gap: 12px; }
+    .live-indicator { display: flex; align-items: center; gap: 6px; background: rgba(239, 68, 68, 0.2);
+      padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; color: #ef4444;
     }
-
-    .player-wrapper {
-      position: relative;
-      background: var(--dark);
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        var(--glow);
+    .live-dot { width: 8px; height: 8px; background: #ef4444; border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
+    .channel-name { font-weight: 600; color: var(--text); }
+    .quality-badge { background: linear-gradient(135deg, var(--primary), var(--accent));
+      padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;
     }
-
-    .player-header {
-      padding: 16px 20px;
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    video { width: 100%; aspect-ratio: 16/9; max-height: 70vh; background: #000; display: block; }
+    .controls-section { padding: 20px; background: var(--card); border-top: 1px solid var(--border); }
+    .controls { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .ctrl-btn { display: flex; align-items: center; gap: 8px; padding: 12px 24px; border: none;
+      border-radius: 12px; font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.3s ease;
     }
-
-    .now-playing {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .ctrl-btn.primary { background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
     }
-
-    .live-indicator {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(239, 68, 68, 0.2);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #ef4444;
+    .ctrl-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5); }
+    .ctrl-btn.secondary { background: var(--card-hover); color: var(--text); border: 1px solid var(--border); }
+    .ctrl-btn.secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--primary); }
+    .ctrl-btn.fullscreen { background: linear-gradient(135deg, var(--secondary), #be185d); color: white; }
+    .ctrl-btn.fullscreen:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5); }
+    .channel-stats { display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
+    .stat-item { text-align: center; padding: 20px 30px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; }
+    .stat-number { font-size: 36px; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      background: #ef4444;
-      border-radius: 50%;
-      animation: pulse 1.5s infinite;
+    .stat-label { font-size: 14px; color: var(--text-muted); margin-top: 5px; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 30px; }
+    .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; transition: all 0.3s ease; }
+    .feature-card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: var(--glow); }
+    .feature-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px;
     }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.2); }
+    .feature-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .feature-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+    footer { margin-top: 60px; padding: 30px 20px; background: var(--card); border-top: 1px solid var(--border); text-align: center; }
+    .footer-content { max-width: 1200px; margin: 0 auto; }
+    .footer-brand { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; }
+    .footer-logo { width: 32px; height: 32px; background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px;
     }
-
-    .channel-name {
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .quality-badge {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    video {
-      width: 100%;
-      aspect-ratio: 16/9;
-      max-height: 70vh;
-      background: #000;
-      display: block;
-    }
-
-    /* Controls */
-    .controls-section {
-      padding: 20px;
-      background: var(--card);
-      border-top: 1px solid var(--border);
-    }
-
-    .controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .ctrl-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .ctrl-btn.primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-    }
-
-    .ctrl-btn.primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
-    }
-
-    .ctrl-btn.secondary {
-      background: var(--card-hover);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .ctrl-btn.secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: var(--primary);
-    }
-
-    .ctrl-btn.fullscreen {
-      background: linear-gradient(135deg, var(--secondary), #be185d);
-      color: white;
-    }
-
-    .ctrl-btn.fullscreen:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
-    }
-
-    /* Features Grid */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-      margin-top: 30px;
-    }
-
-    .feature-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      transition: all 0.3s ease;
-    }
-
-    .feature-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-4px);
-      box-shadow: var(--glow);
-    }
-
-    .feature-icon {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      margin-bottom: 16px;
-    }
-
-    .feature-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .feature-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 60px;
-      padding: 30px 20px;
-      background: var(--card);
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .footer-logo {
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-    }
-
-    .footer-social {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .footer-text {
-      color: var(--text-muted);
-      font-size: 13px;
-    }
-
-    .footer-text a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    .footer-text a:hover {
-      text-decoration: underline;
-    }
-
-    /* Mobile Responsive */
+    .footer-social { display: flex; justify-content: center; gap: 12px; margin-bottom: 20px; }
+    .footer-text { color: var(--text-muted); font-size: 13px; }
+    .footer-text a { color: var(--primary); text-decoration: none; }
+    .footer-text a:hover { text-decoration: underline; }
     @media (max-width: 768px) {
-      header {
-        padding: 10px 15px;
-      }
-
-      .header-content {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .logo-text {
-        font-size: 20px;
-      }
-
-      .channel-selector {
-        width: 100%;
-        max-width: 100%;
-      }
-
-      select#channelSelect {
-        width: 100%;
-      }
-
-      .social-links {
-        justify-content: center;
-      }
-
-      main {
-        padding-top: 180px;
-      }
-
-      .container {
-        padding: 15px;
-      }
-
-      .player-wrapper {
-        border-radius: 16px;
-      }
-
-      video {
-        aspect-ratio: 16/10;
-      }
-
-      .controls {
-        gap: 8px;
-      }
-
-      .ctrl-btn {
-        padding: 10px 16px;
-        font-size: 13px;
-      }
-
-      .features {
-        grid-template-columns: 1fr;
-      }
+      header { padding: 10px 15px; }
+      .header-content { flex-direction: column; gap: 12px; }
+      .logo-text { font-size: 20px; }
+      .channel-selector { width: 100%; max-width: 100%; }
+      select#channelSelect { width: 100%; }
+      .social-links { justify-content: center; }
+      main { padding-top: 180px; }
+      .container { padding: 15px; }
+      .player-wrapper { border-radius: 16px; }
+      video { aspect-ratio: 16/10; }
+      .controls { gap: 8px; }
+      .ctrl-btn { padding: 10px 16px; font-size: 13px; }
+      .features { grid-template-columns: 1fr; }
+      .channel-stats { gap: 15px; }
+      .stat-item { padding: 15px 20px; }
+      .stat-number { font-size: 28px; }
     }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--darker);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary);
-    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--darker); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
   </style>
 </head>
 <body>
-
 <div class="bg-animation"></div>
-
 <header>
   <div class="header-content">
     <div class="logo">
@@ -566,244 +149,256 @@
       <span class="logo-text">ZeroX TV</span>
       <span class="logo-badge">Premium</span>
     </div>
-
     <div class="channel-selector">
-      <span class="selector-label">
-        <i class="fas fa-satellite-dish"></i>
-        Kanal:
-      </span>
+      <span class="selector-label"><i class="fas fa-satellite-dish"></i> Kanal:</span>
       <select id="channelSelect">
-        <optgroup label="🥊 Sport olami">
-          <option value="https://stream2.cinerama.uz/1263/tracks-v1a1/mono.m3u8">Setanta TV 1</option>
-          <option value="http://94.43.1.138:8081/setanta2/index.m3u8">Setanta TV 2</option>
-          <option value="https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/bitrate_3.m3u8">Real Madrid TV</option>
-          <option value="http://31.148.48.15/Futbol_HD/index.m3u8">Футбол HD</option>
-          <option value="https://stream1.cinerama.uz/1004/tracks-v1a1/mono.m3u8">Sport UZ HD</option>
-          <option value="https://stream8.cinerama.uz/1010/tracks-v1a1/playlist.m3u8">Futbol UZ HD</option>
-          <option value="https://a62dad94.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWV1X0ZJRkFQbHVzRW5nbGlzaF9ITFM/playlist.m3u8">FIFA +</option>
-          <option value="https://stream1.cinerama.uz/1229/tracks-v1a1/mono.m3u8">Viju Sport</option>
-          <option value="https://stream8.cinerama.uz/1226/tracks-v1a1/playlist.m3u8">MMA TV</option>
-          <option value="https://linear-893.frequency.stream/dist/xumo/893/hls/master/playlist.m3u8">UFC TV</option>
-          <option value="https://streaming.televizor-24-tochka.ru/live/6.m3u8">Матч ТВ</option>
-          <option value="https://stream8.cinerama.uz/1049/tracks-v1a1/playlist.m3u8">Матч Планета</option>
-          <option value="http://194.143.148.28:8080/MatchArena/index.m3u8">Матч Арена</option>
-          <option value="http://185.189.225.157/EuroSport1/index.m3u8">Eurosport 1 HD</option>
-          <option value="http://185.189.225.157/EuroSport2/index.m3u8">Eurosport 2 HD</option>
-          <option value="https://bein-esp-xumo.amagi.tv/playlistR1080p.m3u8">BEIN Sport Extra</option>
-          <option value="https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8">Red Bull TV</option>
+        <optgroup label="⚽ Futbol LIVE - El Clasico, UCL, EPL">
+          <option value="https://stream2.cinerama.uz/1263/tracks-v1a1/mono.m3u8">🔴 Setanta Sports 1 HD</option>
+          <option value="http://94.43.1.138:8081/setanta2/index.m3u8">🔴 Setanta Sports 2 HD</option>
+          <option value="https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/bitrate_3.m3u8">⚪ Real Madrid TV</option>
+          <option value="https://directos-ms-audio1-fchd.atresmedia.com/live/sd/GolTV/bitrate_2.m3u8">🟡 GOL TV</option>
+          <option value="https://bein-esp-xumo.amagi.tv/playlistR1080p.m3u8">🟢 beIN Sports XTRA</option>
+          <option value="http://31.148.48.15/Futbol_HD/index.m3u8">⚽ Футбол HD</option>
+          <option value="https://streaming.televizor-24-tochka.ru/live/6.m3u8">⚽ Матч ТВ HD</option>
+          <option value="https://stream8.cinerama.uz/1049/tracks-v1a1/playlist.m3u8">🌍 Матч Планета</option>
+          <option value="http://194.143.148.28:8080/MatchArena/index.m3u8">🏟️ Матч Арена</option>
+          <option value="https://stream1.cinerama.uz/1229/tracks-v1a1/mono.m3u8">📺 Viju Sport HD</option>
+          <option value="http://185.189.225.157/EuroSport1/index.m3u8">🔵 Eurosport 1 HD</option>
+          <option value="http://185.189.225.157/EuroSport2/index.m3u8">🔵 Eurosport 2 HD</option>
+          <option value="https://a62dad94.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWV1X0ZJRkFQbHVzRW5nbGlzaF9ITFM/playlist.m3u8">🏆 FIFA+ TV</option>
+          <option value="https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8">🎯 Red Bull TV</option>
+          <option value="https://stream1.cinerama.uz/1004/tracks-v1a1/mono.m3u8">🇺🇿 Sport UZ HD</option>
+          <option value="https://stream8.cinerama.uz/1010/tracks-v1a1/playlist.m3u8">🇺🇿 Futbol UZ HD</option>
         </optgroup>
-
-        <optgroup label="🏆 Premium TV">
-          <option value="https://cdn4.skygo.mn/live/disk1/TNT4/HLSv3-FTA/TNT4.m3u8">ТНТ International</option>
-          <option value="https://streaming.televizor-24-tochka.ru/live/23-req_offset_28000000-req_window_0-1k_v5.m3u8">ТНТ</option>
-          <option value="https://cdn-01.bonus-tv.ru/tntmusic/playlist.m3u8">TNT Music</option>
-          <option value="http://194.143.148.28:8080/CTC_LOVE/index.m3u8">СТС Love</option>
-          <option value="http://31.148.48.15/STS_Kids_HD/index.m3u8">СТС Kids</option>
-          <option value="https://stream8.cinerama.uz/1273/tracks-v1a1/playlist.m3u8">Дорама</option>
-          <option value="https://streaming.televizor-24-tochka.ru/live/20.m3u8">Muz TV</option>
-          <option value="https://hls-03-video.webcaramba.com/rutv/live_1080/index.m3u8">RU.TV</option>
-          <option value="https://streaming.televizor-24-tochka.ru/live/19.m3u8">Пятница!</option>
-          <option value="https://stream8.cinerama.uz/1057/tracks-v1a1/playlist.m3u8">Viasat Kino</option>
-          <option value="http://193.33.88.172/europa-plus-tv/tracks-v1a1/mono.m3u8">Europa Plus TV</option>
+        <optgroup label="🥊 Sport - UFC, MMA, Boks">
+          <option value="https://stream8.cinerama.uz/1226/tracks-v1a1/playlist.m3u8">🥋 MMA TV HD</option>
+          <option value="https://linear-893.frequency.stream/dist/xumo/893/hls/master/playlist.m3u8">🥊 UFC Fight Pass</option>
+          <option value="https://dazn-combat-rakuten.amagi.tv/hls/amagi_hls_data_rakutenAA-dazn-combat-rakuten/CDN/master.m3u8">🥊 DAZN Combat</option>
+          <option value="https://amg01074-fueltv-fueltvemeaen-rakuten-b6j62.amagi.tv/hls/amagi_hls_data_rakutenAA-fueltvemeaen/CDN/master.m3u8">⚡ Fuel TV HD</option>
+          <option value="https://stream8.cinerama.uz/1028/tracks-v1a1/playlist.m3u8">🏒 KHL TV</option>
+          <option value="http://93.125.121.61:8383/play/a028">🏒 KHL Prime HD</option>
+          <option value="http://217.11.177.56:80/streams/media/extreme-sport_720x576/index.m3u8">🎿 Extreme Sports</option>
+          <option value="https://stream8.cinerama.uz/1038/tracks-v1a1/playlist.m3u8">🎣 Охота и Рыбалка</option>
         </optgroup>
-
-        <optgroup label="🎬 Kino olami">
-          <option value="https://sirius.greenhosting.ru/Kino24Ru/video.m3u8">Kino24</option>
-          <option value="https://streaming.televizor-24-tochka.ru/live/8.m3u8">TV-5</option>
-          <option value="https://streaming.televizor-24-tochka.ru/live/17-req_offset_28000000-req_window_0-1k_v5.m3u8">Домашний</option>
-          <option value="https://streaming.televizor-24-tochka.ru/live/18.m3u8">TV-3</option>
-          <option value="https://stream8.cinerama.uz/1009/tracks-v1a1/playlist.m3u8">Kinoteatr</option>
-          <option value="https://streaming.goodstream.cyou/live/44-req_offset_28000000-req_window_0-1k_v5.m3u8">Дом Кино</option>
-          <option value="https://autopilot.catcast.tv/content/38617/index.m3u8">Кино 1</option>
-          <option value="https://v2.catcast.tv/content/41596/index.m3u8">Индийское Кино</option>
-          <option value="https://stream8.cinerama.uz/1051/tracks-v1a1/playlist.m3u8">Кинопремьера</option>
-          <option value="http://193.27.209.122/bollywood/index.m3u8">Bollywood</option>
-          <option value="https://stream8.cinerama.uz/1213/tracks-v1a1/playlist.m3u8">Biz Cinema</option>
+        <optgroup label="🇷🇺 Rossiya Premium TV">
+          <option value="https://streaming.goodstream.cyou/live/210.m3u8">📺 Первый Канал HD</option>
+          <option value="https://vgtrkregion-reg.cdnvideo.ru/vgtrk/0/russia1-hd/index.m3u8">📺 Россия 1 HD</option>
+          <option value="https://stream8.cinerama.uz/1021/tracks-v1a1/playlist.m3u8">📰 Россия 24 HD</option>
+          <option value="https://streaming.goodstream.cyou/live/213.m3u8">📺 НТВ HD</option>
+          <option value="https://cdn4.skygo.mn/live/disk1/TNT4/HLSv3-FTA/TNT4.m3u8">😂 ТНТ International</option>
+          <option value="https://streaming.televizor-24-tochka.ru/live/23-req_offset_28000000-req_window_0-1k_v5.m3u8">😂 ТНТ HD</option>
+          <option value="https://cdn-01.bonus-tv.ru/tntmusic/playlist.m3u8">🎵 ТНТ Music</option>
+          <option value="http://194.143.148.28:8080/CTC_LOVE/index.m3u8">💕 СТС Love</option>
+          <option value="http://31.148.48.15/STS_Kids_HD/index.m3u8">👶 СТС Kids</option>
+          <option value="https://streaming.televizor-24-tochka.ru/live/19.m3u8">🎉 Пятница!</option>
+          <option value="http://178.212.71.253:8000/play/75/index.m3u8">📺 Суббота!</option>
+          <option value="http://178.212.71.253:8000/play/139/index.m3u8">📺 ЧЕ!</option>
+          <option value="https://streaming.televizor-24-tochka.ru/live/8.m3u8">📺 ТВ-5</option>
+          <option value="https://streaming.televizor-24-tochka.ru/live/18.m3u8">👻 ТВ-3</option>
+          <option value="https://streaming.televizor-24-tochka.ru/live/17-req_offset_28000000-req_window_0-1k_v5.m3u8">🏠 Домашний</option>
+          <option value="https://online-video.rbc.ru/spb/rbctv_spb.m3u8">💼 РБК HD</option>
+          <option value="https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221_2.smil/playlist.m3u8">📺 ТВЦ</option>
+          <option value="http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mir24_2500/playlist.m3u8">🌍 Мир 24</option>
+          <option value="https://live-vgtrksmotrim.cdnvideo.ru/vgtrksmotrim/smotrim-live-01.smil/tracks-v5a1/mono.m3u8">📺 Смотрим</option>
+          <option value="https://live-vgtrksmotrim.cdnvideo.ru/vgtrksmotrim/smotrim-live-03-srt.smil/playlist.m3u8">📰 360° Новости</option>
+          <option value="http://193.33.88.172/2x2/tracks-v1a1/mono.m3u8">🎮 2x2</option>
+          <option value="https://mhd128.iptv2022.com/p/b6i-8rju9t3aRT1rZ675Aw,1758437447/streaming/channelu/324/1/index.m3u8">📺 Ю-ТВ</option>
         </optgroup>
-
-        <optgroup label="📰 Yangiliklar">
-          <option value="https://stream8.cinerama.uz/1021/tracks-v1a1/playlist.m3u8">Россия 24</option>
-          <option value="https://online-video.rbc.ru/spb/rbctv_spb.m3u8">РБК</option>
-          <option value="https://stream8.cinerama.uz/1015/tracks-v1a1/playlist.m3u8">UzReport</option>
-          <option value="https://stream8.cinerama.uz/1001/tracks-v1a1/playlist.m3u8">O'zbekiston 24</option>
-          <option value="https://tv.balkanweb.com/news24/livestream/playlist.m3u8">News24</option>
-          <option value="https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8">CNN USA</option>
-          <option value="https://livetv-fa.tubi.video/nbc-news-now/master.m3u8">NBC News</option>
-          <option value="https://live.france24.com/hls/live/2037222-b/F24_AR_HI_HLS/master_5000.m3u8">France24</option>
-          <option value="https://rt-glb.rttv.com/live/rtnews/playlist_4500Kb.m3u8">RT News</option>
-          <option value="http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mir24_2500/playlist.m3u8">Мир 24</option>
+        <optgroup label="🎬 Kino - Rossiya Premium">
+          <option value="https://stream8.cinerama.uz/1057/tracks-v1a1/playlist.m3u8">🎬 Viasat Kino HD</option>
+          <option value="https://stream8.cinerama.uz/1058/tracks-v1a1/playlist.m3u8">🎬 Viju+ Kino HD</option>
+          <option value="https://stream8.cinerama.uz/1059/tracks-v1a1/playlist.m3u8">🎬 TV1000 HD</option>
+          <option value="https://sirius.greenhosting.ru/Kino24Ru/video.m3u8">🎬 Кино 24</option>
+          <option value="https://streaming.goodstream.cyou/live/44-req_offset_28000000-req_window_0-1k_v5.m3u8">🏠 Дом Кино</option>
+          <option value="https://autopilot.catcast.tv/content/38617/index.m3u8">🎬 Кино 1</option>
+          <option value="https://stream8.cinerama.uz/1051/tracks-v1a1/playlist.m3u8">⭐ Кинопремьера</option>
+          <option value="http://178.212.71.253:8000/play/64/index.m3u8">📺 Киносерия HD</option>
+          <option value="http://178.212.71.253:8000/play/126/index.m3u8">💪 Мужское кино</option>
+          <option value="http://178.212.71.253:8000/play/127/index.m3u8">👨‍👩‍👧 Киносемья</option>
+          <option value="http://178.212.71.253:8000/play/122/index.m3u8">💑 Киносвидание</option>
+          <option value="http://178.212.71.253:8000/play/70/index.m3u8">🎭 Киномикс</option>
+          <option value="http://178.212.71.253:8000/play/123/index.m3u8">🌟 Кинохит</option>
+          <option value="http://178.212.71.253:8000/play/128/index.m3u8">🆕 Наше новое кино</option>
+          <option value="http://178.212.71.253:8000/play/85/index.m3u8">😂 Кинокомедия</option>
+          <option value="http://vod.tuva.ru/kinotv/index.m3u8">📺 КиноТВ</option>
+          <option value="http://178.212.71.253:8000/play/133/index.m3u8">👻 КиноУжас</option>
+          <option value="http://178.212.71.253:8000/play/40/index.m3u8">🎬 Cinema TV</option>
+          <option value="https://stream8.cinerama.uz/1052/tracks-v1a1/playlist.m3u8">🎬 Родное кино</option>
+          <option value="https://v2.catcast.tv/content/41596/index.m3u8">🇮🇳 Индийское Кино</option>
+          <option value="http://193.27.209.122/bollywood/index.m3u8">🇮🇳 Bollywood TV</option>
+          <option value="https://stream8.cinerama.uz/1273/tracks-v1a1/playlist.m3u8">🇰🇷 Дорама</option>
+          <option value="https://stream8.cinerama.uz/1448/tracks-v1a1/playlist.m3u8">🇰🇷 KBC World</option>
+          <option value="https://132544.edgevideo.ru/streams/132544_847220/1325441080/index.m3u8">👻 Horror TV</option>
+          <option value="https://stream8.cinerama.uz/1213/tracks-v1a1/playlist.m3u8">🇺🇿 Biz Cinema</option>
         </optgroup>
-
-        <optgroup label="🎷 Musiqa">
-          <option value="https://hls-03-video.webcaramba.com/rutv/live_1080/index.m3u8">RU TV</option>
-          <option value="https://songtv.hls.iptvdc.com/web-russia/index.m3u8">Song TV</option>
-          <option value="https://stream8.cinerama.uz/1008/tracks-v1a1/playlist.m3u8">Navo</option>
-          <option value="https://streaming.televizor-24-tochka.ru/live/20.m3u8">Muz TV</option>
-          <option value="https://hls-shansontv.cdnvideo.ru/shansontv/shansontv-sd.smil/playlist.m3u8">Shanson TV</option>
-          <option value="https://hls.live.31kz.adapto.kz/muzzone/index.m3u8">Muzzone KZ</option>
-          <option value="https://stream8.cinerama.uz/1063/tracks-v1a1/playlist.m3u8">Muz UZ</option>
-          <option value="https://stream8.cinerama.uz/1212/tracks-v1a1/playlist.m3u8">Biz Music</option>
+        <optgroup label="🎵 Musiqa TV">
+          <option value="https://streaming.televizor-24-tochka.ru/live/20.m3u8">🎵 МузТВ HD</option>
+          <option value="https://hls-03-video.webcaramba.com/rutv/live_1080/index.m3u8">🎵 RU.TV HD</option>
+          <option value="https://songtv.hls.iptvdc.com/web-russia/index.m3u8">🎵 Song TV</option>
+          <option value="http://193.33.88.172/europa-plus-tv/tracks-v1a1/mono.m3u8">🎵 Europa Plus TV</option>
+          <option value="https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz2/muzsoyuz.6fw0-58xp-acts-esy0/playlist.m3u8">🎵 МузСоюз</option>
+          <option value="https://kino-1.catcast.tv/content/37745/index.m3u8">🎵 Музыка 1</option>
+          <option value="https://hls-shansontv.cdnvideo.ru/shansontv/shansontv-sd.smil/playlist.m3u8">🎵 Шансон ТВ</option>
+          <option value="https://stream8.cinerama.uz/1008/tracks-v1a1/playlist.m3u8">🇺🇿 Navo</option>
+          <option value="https://stream8.cinerama.uz/1063/tracks-v1a1/playlist.m3u8">🇺🇿 Muz UZ</option>
+          <option value="https://stream8.cinerama.uz/1212/tracks-v1a1/playlist.m3u8">🇺🇿 Biz Music</option>
+          <option value="https://hls.live.31kz.adapto.kz/muzzone/index.m3u8">🇰🇿 Muzzone KZ</option>
         </optgroup>
-
+        <optgroup label="📰 Yangiliklar - Dunyo">
+          <option value="https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8">🇺🇸 CNN USA</option>
+          <option value="https://livetv-fa.tubi.video/nbc-news-now/master.m3u8">🇺🇸 NBC News</option>
+          <option value="https://stream.livenewsplay.com:9443/hls/foxnews/foxsd.m3u8">🇺🇸 Fox News</option>
+          <option value="https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg00731-gannettcoinc-usatodaynews-plex/playlist.m3u8">🇺🇸 USA Today</option>
+          <option value="https://content.uplynk.com/channel/4bb4901b934c4e029fd4c1abfc766c37.m3u8">🇺🇸 Scripps News</option>
+          <option value="https://live.france24.com/hls/live/2037222-b/F24_AR_HI_HLS/master_5000.m3u8">🇫🇷 France 24</option>
+          <option value="https://rt-glb.rttv.com/live/rtnews/playlist_4500Kb.m3u8">🇷🇺 RT News</option>
+          <option value="https://russian-livews.cgtn.com/hls/LSvexABhNipibK5KRuUkvHZ7220802LSTeze9o8tdFXMHsb1VosgoT220802cd/playlist.m3u8">🇨🇳 CGTN Rus</option>
+          <option value="https://tv.balkanweb.com/news24/livestream/playlist.m3u8">📰 News 24</option>
+        </optgroup>
         <optgroup label="🐥 Bolalar uchun">
-          <option value="https://stream8.cinerama.uz/1034/tracks-v1a1/playlist.m3u8">Карусель</option>
-          <option value="https://stream8.cinerama.uz/1007/playlist.m3u8">Bolajon</option>
-          <option value="https://sirius.greenhosting.ru/MultimaniaRu/tracks-v1a1/mono.m3u8">Мультимания</option>
-          <option value="https://v2.catcast.tv/content/38720/index.m3u8">Детское Кино</option>
-          <option value="https://tv.mediacdn.ru/live/solntse/playlist_3000k.m3u8">Солнце</option>
-          <option value="https://stream8.cinerama.uz/1032/tracks-v1a1/playlist.m3u8">Детский мир</option>
+          <option value="https://stream8.cinerama.uz/1034/tracks-v1a1/playlist.m3u8">🎠 Карусель</option>
+          <option value="https://stream8.cinerama.uz/1007/playlist.m3u8">🇺🇿 Bolajon</option>
+          <option value="https://sirius.greenhosting.ru/MultimaniaRu/tracks-v1a1/mono.m3u8">🎬 Мультимания</option>
+          <option value="https://v2.catcast.tv/content/38720/index.m3u8">🎬 Детское Кино</option>
+          <option value="https://tv.mediacdn.ru/live/solntse/playlist_3000k.m3u8">☀️ Солнце</option>
+          <option value="https://132544.edgevideo.ru/streams/132544_931352/132544720/index.m3u8">📖 Сказки ТВ</option>
+          <option value="https://stream8.cinerama.uz/1032/tracks-v1a1/playlist.m3u8">🌍 Детский мир</option>
+          <option value="https://stream8.cinerama.uz/1033/tracks-v1a1/playlist.m3u8">🎓 Уник-ум</option>
         </optgroup>
-
-        <optgroup label="👀 Bilim va Kashfiyot">
-          <option value="https://stream8.cinerama.uz/1206/tracks-v1a1/playlist.m3u8">Dasturxon TV</option>
-          <option value="https://stream8.cinerama.uz/1039/tracks-v1a1/playlist.m3u8">Discovery HD</option>
-          <option value="https://stream8.cinerama.uz/1040/tracks-v1a1/playlist.m3u8">Discovery Science</option>
-          <option value="https://stream8.cinerama.uz/1041/tracks-v1a1/playlist.m3u8">National Geographic</option>
-          <option value="https://stream8.cinerama.uz/1042/tracks-v1a1/playlist.m3u8">Nat Geo Wild</option>
-          <option value="https://stream8.cinerama.uz/1046/tracks-v1a1/playlist.m3u8">Viasat History</option>
-          <option value="https://stream8.cinerama.uz/1053/tracks-v1a1/playlist.m3u8">Fashion TV</option>
-          <option value="https://stream8.cinerama.uz/1045/tracks-v1a1/playlist.m3u8">Viju Explore</option>
+        <optgroup label="🔬 Bilim va Kashfiyot">
+          <option value="https://stream8.cinerama.uz/1039/tracks-v1a1/playlist.m3u8">🌍 Discovery HD</option>
+          <option value="https://stream8.cinerama.uz/1040/tracks-v1a1/playlist.m3u8">🔬 Discovery Science</option>
+          <option value="https://stream8.cinerama.uz/1041/tracks-v1a1/playlist.m3u8">🌍 National Geographic</option>
+          <option value="https://stream8.cinerama.uz/1042/tracks-v1a1/playlist.m3u8">🦁 Nat Geo Wild</option>
+          <option value="https://stream8.cinerama.uz/1043/tracks-v1a1/playlist.m3u8">🐾 Animal Planet HD</option>
+          <option value="https://stream8.cinerama.uz/1046/tracks-v1a1/playlist.m3u8">📜 Viasat History</option>
+          <option value="https://stream8.cinerama.uz/1045/tracks-v1a1/playlist.m3u8">🔭 Viju Explore</option>
+          <option value="https://stream8.cinerama.uz/1031/tracks-v1a1/playlist.m3u8">🚀 Точка Открытия</option>
+          <option value="https://stream8.cinerama.uz/1036/tracks-v1a1/playlist.m3u8">🚗 Авто+</option>
+          <option value="https://stream8.cinerama.uz/1037/tracks-v1a1/playlist.m3u8">🔧 Т24</option>
+          <option value="https://stream8.cinerama.uz/1053/tracks-v1a1/playlist.m3u8">👗 Fashion TV</option>
+          <option value="https://api.alpaca.t62a.com/hls/9110/index.m3u8">🍳 Кулинар ТВ</option>
+          <option value="https://stream8.cinerama.uz/1206/tracks-v1a1/playlist.m3u8">🍽️ Dasturxon TV</option>
+          <option value="http://45.11.139.43:8555/telekafe/index.m3u8">☕ Телекафе</option>
+          <option value="https://cdn-01.bonus-tv.ru/kmir/tracks-v1a1/mono.m3u8">🐴 Конный мир</option>
         </optgroup>
-
-        <optgroup label="🐶 Tabiat">
-          <option value="https://cdn-01.bonus-tv.ru/kmir/tracks-v1a1/mono.m3u8">Конный мир</option>
-          <option value="https://stream8.cinerama.uz/1038/tracks-v1a1/playlist.m3u8">Охота и рыбалка</option>
-          <option value="https://stream8.cinerama.uz/1043/tracks-v1a1/playlist.m3u8">Animal Planet HD</option>
+        <optgroup label="🇺🇿 O'zbekiston - Barcha TV">
+          <option value="https://stream8.cinerama.uz/1001/tracks-v1a1/playlist.m3u8">📺 O'zbekiston TV</option>
+          <option value="https://stream8.cinerama.uz/1001/tracks-v1a1/playlist.m3u8">📰 O'zbekiston 24</option>
+          <option value="https://stream8.cinerama.uz/1002/tracks-v1a1/playlist.m3u8">👦 Yoshlar TV</option>
+          <option value="https://stream8.cinerama.uz/1003/tracks-v1a1/playlist.m3u8">🏙️ Toshkent TV</option>
+          <option value="https://stream1.cinerama.uz/1004/tracks-v1a1/mono.m3u8">⚽ Sport UZ HD</option>
+          <option value="https://stream8.cinerama.uz/1005/tracks-v1a1/playlist.m3u8">🎭 Madaniyat va Marifat</option>
+          <option value="https://stream8.cinerama.uz/1006/tracks-v1a1/playlist.m3u8">🌍 Dunyo Bo'ylab</option>
+          <option value="https://stream8.cinerama.uz/1007/playlist.m3u8">👶 Bolajon</option>
+          <option value="https://stream8.cinerama.uz/1008/tracks-v1a1/playlist.m3u8">🎵 Navo</option>
+          <option value="https://stream8.cinerama.uz/1009/tracks-v1a1/playlist.m3u8">🎬 Kinoteatr</option>
+          <option value="https://stream8.cinerama.uz/1010/tracks-v1a1/playlist.m3u8">⚽ Futbol UZ HD</option>
+          <option value="https://stream8.cinerama.uz/1013/tracks-v1a1/playlist.m3u8">🏘️ Mahalla TV</option>
+          <option value="https://stream8.cinerama.uz/1014/tracks-v1a1/playlist.m3u8">🇺🇿 Milliy TV</option>
+          <option value="https://stream8.cinerama.uz/1015/tracks-v1a1/playlist.m3u8">📰 UzReport</option>
+          <option value="https://stream8.cinerama.uz/1016/tracks-v1a1/mono.m3u8">😂 Zo'r TV</option>
+          <option value="https://stream2.cinerama.uz/1017/tracks-v2a1/mono.m3u8">💕 Sevimli TV</option>
+          <option value="https://stream8.cinerama.uz/1063/tracks-v1a1/playlist.m3u8">🎵 Muz UZ</option>
+          <option value="https://stream8.cinerama.uz/1206/tracks-v1a1/playlist.m3u8">🍽️ Dasturxon TV</option>
+          <option value="https://stream1.cinerama.uz/1210/tracks-v1a1/mono.m3u8">✨ Lux TV</option>
+          <option value="https://stream8.cinerama.uz/1211/tracks-v1a1/playlist.m3u8">📺 Biz TV</option>
+          <option value="https://stream8.cinerama.uz/1212/tracks-v1a1/playlist.m3u8">🎵 Biz Music</option>
+          <option value="https://stream8.cinerama.uz/1213/tracks-v1a1/playlist.m3u8">🎬 Biz Cinema</option>
+          <option value="https://stream8.cinerama.uz/1217/tracks-v1a1/playlist.m3u8">📺 My5</option>
+          <option value="https://stream1.cinerama.uz/1220/tracks-v1a1/mono.m3u8">📺 Nurafshon TV</option>
+          <option value="https://stream8.cinerama.uz/1221/tracks-v1a1/playlist.m3u8">📺 Renessans TV</option>
+          <option value="https://stream8.cinerama.uz/1467/playlist.m3u8">🇺🇿 Qaraqalpaqstan TV</option>
         </optgroup>
-
-        <optgroup label="🇺🇿 O'zbekiston TV">
-          <option value="https://stream8.cinerama.uz/1211/tracks-v1a1/playlist.m3u8">Biz TV</option>
-          <option value="https://stream1.cinerama.uz/1210/tracks-v1a1/mono.m3u8">Lux TV</option>
-          <option value="https://stream1.cinerama.uz/1220/tracks-v1a1/mono.m3u8">Nurafshon TV</option>
-          <option value="https://stream8.cinerama.uz/1003/tracks-v1a1/playlist.m3u8">Toshkent</option>
-          <option value="https://stream8.cinerama.uz/1002/tracks-v1a1/playlist.m3u8">Yoshlar TV</option>
-          <option value="https://stream8.cinerama.uz/1016/tracks-v1a1/mono.m3u8">Zo'r TV</option>
-          <option value="https://stream2.cinerama.uz/1017/tracks-v2a1/mono.m3u8">Sevimli</option>
-          <option value="https://stream8.cinerama.uz/1014/tracks-v1a1/playlist.m3u8">Milliy TV</option>
-          <option value="https://stream8.cinerama.uz/1217/tracks-v1a1/playlist.m3u8">My5</option>
-          <option value="https://stream8.cinerama.uz/1221/tracks-v1a1/playlist.m3u8">Renessans TV</option>
-          <option value="https://stream8.cinerama.uz/1467/playlist.m3u8">Qaraqalpaqstan</option>
-          <option value="https://stream8.cinerama.uz/1013/tracks-v1a1/playlist.m3u8">Mahalla</option>
-          <option value="https://stream8.cinerama.uz/1005/tracks-v1a1/playlist.m3u8">Madaniyat</option>
-        </optgroup>
-
         <optgroup label="🇰🇿 Qozog'iston TV">
-          <option value="https://qazaqstantv-stream.qazcdn.com/international/international/playlist.m3u8">Qazaqstan TV</option>
-          <option value="http://sc.id-tv.kz/Astana.m3u8">Astana TV</option>
-          <option value="http://sc.id-tv.kz/Khabar.m3u8">Xabar TV</option>
-          <option value="http://sc.id-tv.kz/Khabar_24.m3u8">Xabar 24</option>
-          <option value="https://abaitv-stream.qazcdn.com/abaitv/abaitv/playlist.m3u8">Abai TV</option>
-          <option value="http://sc.id-tv.kz/31Kanal_34_35.m3u8">31 TV</option>
-          <option value="https://hls.live.31kz.adapto.kz/muzzone/index.m3u8">Muzzone KZ</option>
+          <option value="https://qazaqstantv-stream.qazcdn.com/international/international/playlist.m3u8">📺 Qazaqstan TV</option>
+          <option value="http://sc.id-tv.kz/Astana.m3u8">🏙️ Astana TV</option>
+          <option value="http://sc.id-tv.kz/Khabar.m3u8">📺 Xabar TV</option>
+          <option value="http://sc.id-tv.kz/Khabar_24.m3u8">📰 Xabar 24</option>
+          <option value="https://abaitv-stream.qazcdn.com/abaitv/abaitv/playlist.m3u8">📺 Abai TV</option>
+          <option value="http://sc.id-tv.kz/Atameken.m3u8">💼 Atameken Business</option>
+          <option value="http://sc.id-tv.kz/ElArna_34_35.m3u8">📺 El Arna</option>
+          <option value="http://sc.id-tv.kz/KTK_34_35.m3u8">📺 KazTRK</option>
+          <option value="http://sc.id-tv.kz/HitTV.m3u8">🎵 Hit TV</option>
+          <option value="http://sc.id-tv.kz/7_kanal_34_35.m3u8">📺 7 Kanal</option>
+          <option value="http://sc.id-tv.kz/31Kanal_34_35.m3u8">📺 31 Kanal</option>
+          <option value="https://hls.live.31kz.adapto.kz/muzzone/index.m3u8">🎵 Muzzone KZ</option>
         </optgroup>
       </select>
     </div>
-
     <div class="social-links">
-      <a href="https://t.me/Fazliddin_Cyber" target="_blank" class="social-btn telegram" title="Telegram">
-        <i class="fab fa-telegram-plane"></i>
-      </a>
-      <a href="https://instagram.com/takhirov_blog" target="_blank" class="social-btn instagram" title="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/fazliddin-takhirov-%F0%9F%87%BA%F0%9F%87%BF-943126380" target="_blank" class="social-btn linkedin" title="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
+      <a href="https://t.me/Fazliddin_Cyber" target="_blank" class="social-btn telegram" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://instagram.com/takhirov_blog" target="_blank" class="social-btn instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/fazliddin-takhirov-%F0%9F%87%BA%F0%9F%87%BF-943126380" target="_blank" class="social-btn linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
     </div>
   </div>
 </header>
-
 <main>
   <div class="container">
     <div class="player-section">
       <div class="player-wrapper">
         <div class="player-header">
           <div class="now-playing">
-            <div class="live-indicator">
-              <span class="live-dot"></span>
-              JONLI
-            </div>
-            <span class="channel-name" id="channelName">Setanta TV 1</span>
+            <div class="live-indicator"><span class="live-dot"></span> JONLI</div>
+            <span class="channel-name" id="channelName">Setanta Sports 1 HD</span>
           </div>
           <span class="quality-badge">HD</span>
         </div>
-
         <video id="video" controls playsinline></video>
-
         <div class="controls-section">
           <div class="controls">
-            <button class="ctrl-btn primary" id="playBtn">
-              <i class="fas fa-play"></i>
-              Play
-            </button>
-            <button class="ctrl-btn secondary" id="pauseBtn">
-              <i class="fas fa-pause"></i>
-              Pause
-            </button>
-            <button class="ctrl-btn secondary" id="muteBtn">
-              <i class="fas fa-volume-mute"></i>
-              Mute
-            </button>
-            <button class="ctrl-btn fullscreen" id="fullscreenBtn">
-              <i class="fas fa-expand"></i>
-              To'liq ekran
-            </button>
+            <button class="ctrl-btn primary" id="playBtn"><i class="fas fa-play"></i> Play</button>
+            <button class="ctrl-btn secondary" id="pauseBtn"><i class="fas fa-pause"></i> Pause</button>
+            <button class="ctrl-btn secondary" id="muteBtn"><i class="fas fa-volume-mute"></i> Mute</button>
+            <button class="ctrl-btn fullscreen" id="fullscreenBtn"><i class="fas fa-expand"></i> To'liq ekran</button>
           </div>
         </div>
       </div>
     </div>
-
+    <div class="channel-stats">
+      <div class="stat-item"><div class="stat-number">250+</div><div class="stat-label">TV Kanallar</div></div>
+      <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Sport Kanallar</div></div>
+      <div class="stat-item"><div class="stat-number">HD</div><div class="stat-label">Yuqori Sifat</div></div>
+      <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Ishlaydi</div></div>
+    </div>
     <div class="features">
       <div class="feature-card">
-        <div class="feature-icon">📡</div>
-        <h3 class="feature-title">200+ Kanallar</h3>
-        <p class="feature-desc">Sport, kino, musiqa, yangiliklar va boshqa ko'plab kanallar bir joyda.</p>
+        <div class="feature-icon">⚽</div>
+        <h3 class="feature-title">El Clasico & UCL</h3>
+        <p class="feature-desc">Real Madrid vs Barcelona, Champions League, Europa League - barcha muhim o'yinlar!</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3 class="feature-title">Tezkor Stream</h3>
-        <p class="feature-desc">Yuqori sifatli HD va Full HD formatda uzilishsiz translyatsiya.</p>
+        <div class="feature-icon">🇷🇺</div>
+        <h3 class="feature-title">Rossiya Premium</h3>
+        <p class="feature-desc">Первый, Россия 1, НТВ, ТНТ, СТС va boshqa barcha Rossiya kanallari.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">📱</div>
-        <h3 class="feature-title">Barcha Qurilmalar</h3>
-        <p class="feature-desc">Telefon, planshet, kompyuter - istalgan qurilmada ishlaydi.</p>
+        <div class="feature-icon">🇺🇿</div>
+        <h3 class="feature-title">O'zbekiston TV</h3>
+        <p class="feature-desc">O'zbekiston, Yoshlar, Sevimli, Zo'r va barcha mahalliy kanallar.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🆓</div>
-        <h3 class="feature-title">Bepul</h3>
-        <p class="feature-desc">Barcha kanallar mutlaqo bepul. Hech qanday obuna kerak emas.</p>
+        <h3 class="feature-title">100% Bepul</h3>
+        <p class="feature-desc">Barcha kanallar mutlaqo bepul. Hech qanday obuna kerak emas!</p>
       </div>
     </div>
   </div>
 </main>
-
 <footer>
   <div class="footer-content">
     <div class="footer-brand">
       <div class="footer-logo">📺</div>
       <span class="logo-text">ZeroX TV</span>
     </div>
-    
     <div class="footer-social">
-      <a href="https://t.me/Fazliddin_Cyber" target="_blank" class="social-btn telegram">
-        <i class="fab fa-telegram-plane"></i>
-      </a>
-      <a href="https://instagram.com/takhirov_blog" target="_blank" class="social-btn instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/fazliddin-takhirov-%F0%9F%87%BA%F0%9F%87%BF-943126380" target="_blank" class="social-btn linkedin">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
+      <a href="https://t.me/Fazliddin_Cyber" target="_blank" class="social-btn telegram"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://instagram.com/takhirov_blog" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/fazliddin-takhirov-%F0%9F%87%BA%F0%9F%87%BF-943126380" target="_blank" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
     </div>
-
-    <p class="footer-text">
-      © 2025 ZeroX TV. Barcha huquqlar himoyalangan.<br>
-      Yaratuvchi: <a href="https://github.com/Fazliddin2105" target="_blank">@Fazliddin2105</a>
-    </p>
+    <p class="footer-text">© 2025 ZeroX TV - Ultra Premium Streaming Platform<br>Yaratuvchi: <a href="https://github.com/Fazliddin2105" target="_blank">@Fazliddin2105</a></p>
   </div>
 </footer>
-
 <script>
   const video = document.getElementById('video');
   const playBtn = document.getElementById('playBtn');
@@ -812,103 +407,34 @@
   const fullscreenBtn = document.getElementById('fullscreenBtn');
   const channelSelect = document.getElementById('channelSelect');
   const channelName = document.getElementById('channelName');
-
   let hls;
-
   function getProxyUrl(url) {
-    if (url.startsWith("http://")) {
-      return "https://tamerkhan.uz/proxy.php?url=" + encodeURIComponent(url);
-    }
+    if (url.startsWith("http://")) return "https://tamerkhan.uz/proxy.php?url=" + encodeURIComponent(url);
     return url;
   }
-
   function loadChannel(url) {
-    if (hls) {
-      hls.destroy();
-    }
-    
+    if (hls) hls.destroy();
     const finalUrl = getProxyUrl(url);
-    
     if (Hls.isSupported()) {
-      hls = new Hls({
-        enableWorker: true,
-        lowLatencyMode: true,
-      });
+      hls = new Hls({ enableWorker: true, lowLatencyMode: true });
       hls.loadSource(finalUrl);
       hls.attachMedia(video);
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        video.play().catch(e => console.log('Autoplay blocked:', e));
-      });
-      hls.on(Hls.Events.ERROR, (event, data) => {
-        if (data.fatal) {
-          console.log('HLS Error:', data.type);
-        }
-      });
+      hls.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(e => console.log('Autoplay blocked:', e)));
+      hls.on(Hls.Events.ERROR, (event, data) => { if (data.fatal) console.log('HLS Error:', data.type); });
     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
       video.src = finalUrl;
-      video.addEventListener('loadedmetadata', () => {
-        video.play().catch(e => console.log('Autoplay blocked:', e));
-      });
+      video.addEventListener('loadedmetadata', () => video.play().catch(e => console.log('Autoplay blocked:', e)));
     }
-    
-    // Update channel name
     const selectedOption = channelSelect.options[channelSelect.selectedIndex];
     channelName.textContent = selectedOption.text;
   }
-
-  // Load initial channel
   loadChannel(channelSelect.value);
-
-  // Channel change
-  channelSelect.addEventListener('change', () => {
-    loadChannel(channelSelect.value);
-  });
-
-  // Controls
-  playBtn.addEventListener('click', () => {
-    video.play();
-    playBtn.innerHTML = '<i class="fas fa-play"></i> Play';
-  });
-
-  pauseBtn.addEventListener('click', () => {
-    video.pause();
-  });
-
-  muteBtn.addEventListener('click', () => {
-    video.muted = !video.muted;
-    if (video.muted) {
-      muteBtn.innerHTML = '<i class="fas fa-volume-up"></i> Unmute';
-    } else {
-      muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i> Mute';
-    }
-  });
-
-  fullscreenBtn.addEventListener('click', () => {
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen();
-    }
-  });
-
-  // Keyboard shortcuts
-  document.addEventListener('keydown', (e) => {
-    switch(e.code) {
-      case 'Space':
-        e.preventDefault();
-        video.paused ? video.play() : video.pause();
-        break;
-      case 'KeyM':
-        video.muted = !video.muted;
-        break;
-      case 'KeyF':
-        fullscreenBtn.click();
-        break;
-    }
-  });
+  channelSelect.addEventListener('change', () => loadChannel(channelSelect.value));
+  playBtn.addEventListener('click', () => video.play());
+  pauseBtn.addEventListener('click', () => video.pause());
+  muteBtn.addEventListener('click', () => { video.muted = !video.muted; muteBtn.innerHTML = video.muted ? '<i class="fas fa-volume-up"></i> Unmute' : '<i class="fas fa-volume-mute"></i> Mute'; });
+  fullscreenBtn.addEventListener('click', () => { if (video.requestFullscreen) video.requestFullscreen(); else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen(); else if (video.msRequestFullscreen) video.msRequestFullscreen(); });
+  document.addEventListener('keydown', (e) => { switch(e.code) { case 'Space': e.preventDefault(); video.paused ? video.play() : video.pause(); break; case 'KeyM': video.muted = !video.muted; break; case 'KeyF': fullscreenBtn.click(); break; } });
 </script>
-
 </body>
 </html>
